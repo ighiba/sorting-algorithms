@@ -16,18 +16,18 @@ class MainViewModel: MainViewModelDelegate {
     
     @Published var array: [Int] = []
     
+    private var testArray: [Int] { return ((1...50).map { $0 }).shuffled() }
+    
     func start() {
         DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
-            (0..<50).forEach { _ in
-                sleep(1)
-                let testArray = (0..<50).map { _ in
-                    return Int.random(in: 1...100)
-                }
-                DispatchQueue.main.async {
-                    self.array = testArray
-                }
-            }
+            self.startSelectionSort()
         }
     }
+    
+    func startSelectionSort() {
+        SelectionSort(unsortedArray: testArray) { newArray in
+            self.array = newArray
+            Thread.sleep(forTimeInterval: 0.1)
+        }.start()
+    }
 }
-

@@ -24,6 +24,7 @@ class MainViewController: NSViewController {
         super.viewDidLoad()
         
         viewModel.$array
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] newArray in
                 self?.mainView.sortingBarsView.update(withArray: newArray)
             }
@@ -32,4 +33,3 @@ class MainViewController: NSViewController {
         viewModel.start()
     }
 }
-
