@@ -13,13 +13,17 @@ protocol SortingView: NSView {
 
 class SortingBarsView: NSView, SortingView {
     
-    private let baseColor = NSColor.white.multiply(by: 0.9)
+    // MARK: - Properties
+    
+    private let baseBarColor = NSColor.white.multiply(by: 0.9)
     
     private var barField: CALayer? {
         didSet {
             configureBarField()
         }
     }
+    
+    // MARK: - Init
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -29,6 +33,8 @@ class SortingBarsView: NSView, SortingView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Layout
     
     override func draw(_ dirtyRect: NSRect) {
         NSColor.white.setFill()
@@ -42,9 +48,8 @@ class SortingBarsView: NSView, SortingView {
     
     func configureBarField() {
         guard let barField = self.barField else { return }
-        if !(self.layer?.sublayers?.contains(barField) ?? false) {
-            self.layer?.addSublayer(barField)
-        }
+        self.layer?.sublayers?.removeAll()
+        self.layer?.addSublayer(barField)
         barField.frame = self.bounds
     }
     
@@ -87,6 +92,6 @@ class SortingBarsView: NSView, SortingView {
     }
     
     private func calculateColor(for value: CGFloat) -> NSColor {
-        return baseColor.multiply(by: value)
+        return baseBarColor.multiply(by: value)
     }
 }

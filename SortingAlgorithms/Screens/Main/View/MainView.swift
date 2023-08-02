@@ -14,13 +14,6 @@ class MainView: NSView {
     override init(frame: CGRect) {
         super.init(frame: NSRect(origin: .zero, size: .windowSize))
         setViews()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            let testArray = (0..<50).map { _ in
-                return Int.random(in: 1...100)
-            }
-            self.sortingBarsView.update(withArray: testArray)
-        }
     }
 
     required init?(coder: NSCoder) {

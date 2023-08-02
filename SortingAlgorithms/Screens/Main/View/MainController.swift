@@ -6,16 +6,15 @@
 //
 
 import Cocoa
+import Combine
 
 class MainViewController: NSViewController {
 
-    var viewModel: MainViewModelDelegate! {
-        didSet {
-            // Implement handlers if exists
-        }
-    }
+    var viewModel: MainViewModel!
 
     var mainView = MainView()
+    
+    private var cancellables = Set<AnyCancellable>()
 
     override func loadView() {
         self.view = mainView
@@ -23,6 +22,14 @@ class MainViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewModel.$array
+            .sink { [weak self] newArray in
+                self?.mainView.sortingBarsView.update(withArray: newArray)
+            }
+            .store(in: &cancellables)
+            
+        viewModel.start()
     }
 }
 
