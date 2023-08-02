@@ -33,7 +33,7 @@ class MainViewController: NSViewController {
             }
             .store(in: &cancellables)
             
-        //viewModel.viewDidLoad()
+        viewModel.viewDidLoad()
     }
     
     func configurePopUpButton() {

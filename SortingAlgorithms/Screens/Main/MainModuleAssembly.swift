@@ -13,8 +13,8 @@ class MainModuleAssembly {
         let viewModel = MainViewModel()
 
         view.viewModel = viewModel
-
-        // Setup additional injections
+        
+        viewModel.sortFactory = SortAlgorithmsFactoryImpl()
 
         return view
     }
