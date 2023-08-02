@@ -19,6 +19,9 @@
 		C06A52912A7A98450035DB99 /* BarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52902A7A98450035DB99 /* BarModel.swift */; };
 		C06A52942A7A98700035DB99 /* NSColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52932A7A98700035DB99 /* NSColor.swift */; };
 		C06A52972A7AB1760035DB99 /* SelectionSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52962A7AB1760035DB99 /* SelectionSort.swift */; };
+		C06A52992A7AF2D50035DB99 /* SortAlgorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52982A7AF2D50035DB99 /* SortAlgorithms.swift */; };
+		C06A529B2A7AFF180035DB99 /* BaseSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A529A2A7AFF180035DB99 /* BaseSort.swift */; };
+		C06A529E2A7B01460035DB99 /* SelectablePopUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A529D2A7B01460035DB99 /* SelectablePopUpButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		C06A52902A7A98450035DB99 /* BarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarModel.swift; sourceTree = "<group>"; };
 		C06A52932A7A98700035DB99 /* NSColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColor.swift; sourceTree = "<group>"; };
 		C06A52962A7AB1760035DB99 /* SelectionSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionSort.swift; sourceTree = "<group>"; };
+		C06A52982A7AF2D50035DB99 /* SortAlgorithms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortAlgorithms.swift; sourceTree = "<group>"; };
+		C06A529A2A7AFF180035DB99 /* BaseSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSort.swift; sourceTree = "<group>"; };
+		C06A529D2A7B01460035DB99 /* SelectablePopUpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectablePopUpButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +142,7 @@
 		C06A52892A7A83600035DB99 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				C06A529C2A7B013D0035DB99 /* Buttons */,
 				C06A528A2A7A83730035DB99 /* Views */,
 			);
 			path = UI;
@@ -169,8 +176,18 @@
 			isa = PBXGroup;
 			children = (
 				C06A52962A7AB1760035DB99 /* SelectionSort.swift */,
+				C06A529A2A7AFF180035DB99 /* BaseSort.swift */,
+				C06A52982A7AF2D50035DB99 /* SortAlgorithms.swift */,
 			);
 			path = Sorts;
+			sourceTree = "<group>";
+		};
+		C06A529C2A7B013D0035DB99 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				C06A529D2A7B01460035DB99 /* SelectablePopUpButton.swift */,
+			);
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,10 +262,13 @@
 			files = (
 				C06A52802A7A73030035DB99 /* MainController.swift in Sources */,
 				C06A528C2A7A83CB0035DB99 /* SortingBarsView.swift in Sources */,
+				C06A529E2A7B01460035DB99 /* SelectablePopUpButton.swift in Sources */,
 				C06A527F2A7A73030035DB99 /* MainModuleAssembly.swift in Sources */,
 				C06A52812A7A73030035DB99 /* MainView.swift in Sources */,
+				C06A529B2A7AFF180035DB99 /* BaseSort.swift in Sources */,
 				C06A52972A7AB1760035DB99 /* SelectionSort.swift in Sources */,
 				C06A52942A7A98700035DB99 /* NSColor.swift in Sources */,
+				C06A52992A7AF2D50035DB99 /* SortAlgorithms.swift in Sources */,
 				C06A52882A7A80620035DB99 /* WindowSize.swift in Sources */,
 				C06A526B2A7A71A30035DB99 /* AppDelegate.swift in Sources */,
 				C06A52822A7A73030035DB99 /* MainViewModel.swift in Sources */,
