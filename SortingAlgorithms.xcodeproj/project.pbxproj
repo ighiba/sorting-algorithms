@@ -11,6 +11,10 @@
 		C06A526D2A7A71A30035DB99 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A526C2A7A71A30035DB99 /* ViewController.swift */; };
 		C06A526F2A7A71A40035DB99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C06A526E2A7A71A40035DB99 /* Assets.xcassets */; };
 		C06A52722A7A71A40035DB99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C06A52702A7A71A40035DB99 /* Main.storyboard */; };
+		C06A527F2A7A73030035DB99 /* MainModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A527B2A7A73030035DB99 /* MainModuleAssembly.swift */; };
+		C06A52802A7A73030035DB99 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A527C2A7A73030035DB99 /* MainController.swift */; };
+		C06A52812A7A73030035DB99 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A527D2A7A73030035DB99 /* MainView.swift */; };
+		C06A52822A7A73030035DB99 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A527E2A7A73030035DB99 /* MainViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +24,10 @@
 		C06A526E2A7A71A40035DB99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C06A52712A7A71A40035DB99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C06A52732A7A71A40035DB99 /* SortingAlgorithms.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SortingAlgorithms.entitlements; sourceTree = "<group>"; };
+		C06A527B2A7A73030035DB99 /* MainModuleAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleAssembly.swift; sourceTree = "<group>"; };
+		C06A527C2A7A73030035DB99 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		C06A527D2A7A73030035DB99 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		C06A527E2A7A73030035DB99 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,11 +62,47 @@
 			children = (
 				C06A526A2A7A71A30035DB99 /* AppDelegate.swift */,
 				C06A526C2A7A71A30035DB99 /* ViewController.swift */,
+				C06A52792A7A72D60035DB99 /* Screens */,
 				C06A526E2A7A71A40035DB99 /* Assets.xcassets */,
 				C06A52702A7A71A40035DB99 /* Main.storyboard */,
 				C06A52732A7A71A40035DB99 /* SortingAlgorithms.entitlements */,
 			);
 			path = SortingAlgorithms;
+			sourceTree = "<group>";
+		};
+		C06A52792A7A72D60035DB99 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				C06A527A2A7A72E30035DB99 /* Main */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		C06A527A2A7A72E30035DB99 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				C06A52832A7A730F0035DB99 /* View */,
+				C06A52842A7A73180035DB99 /* ViewModel */,
+				C06A527B2A7A73030035DB99 /* MainModuleAssembly.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		C06A52832A7A730F0035DB99 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C06A527D2A7A73030035DB99 /* MainView.swift */,
+				C06A527C2A7A73030035DB99 /* MainController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C06A52842A7A73180035DB99 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C06A527E2A7A73030035DB99 /* MainViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,8 +175,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C06A52802A7A73030035DB99 /* MainController.swift in Sources */,
+				C06A527F2A7A73030035DB99 /* MainModuleAssembly.swift in Sources */,
 				C06A526D2A7A71A30035DB99 /* ViewController.swift in Sources */,
+				C06A52812A7A73030035DB99 /* MainView.swift in Sources */,
 				C06A526B2A7A71A30035DB99 /* AppDelegate.swift in Sources */,
+				C06A52822A7A73030035DB99 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
