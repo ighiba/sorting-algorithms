@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 final class SelectionSort: BaseSort {
     override func start() {
         var newArray: [Int] = []

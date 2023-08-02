@@ -7,12 +7,17 @@
 
 import Foundation
 
-class BaseSort {
+protocol Sort {
+    init(unsortedArray: [Int], sortChangeHandler: @escaping ([Int]) -> Void, completion: (() -> Void)?)
+    func start()
+}
+
+class BaseSort: Sort {
     var unsortedArray: [Int]
     let sortChangeHandler: ([Int]) -> Void
     let completion: (() -> Void)?
     
-    init(
+    required init(
         unsortedArray: [Int],
         sortChangeHandler: @escaping ([Int]) -> Void,
         completion: (() -> Void)? = nil
