@@ -7,23 +7,9 @@
 
 import Foundation
 
-final class SelectionSort {
-    
-    private var unsortedArray: [Int]
-    private let sortChangeHandler: ([Int]) -> Void
-    private let completion: (() -> Void)?
-    
-    init(
-        unsortedArray: [Int],
-        sortChangeHandler: @escaping ([Int]) -> Void,
-        completion: (() -> Void)? = nil
-    ) {
-        self.unsortedArray = unsortedArray
-        self.sortChangeHandler = sortChangeHandler
-        self.completion = completion
-    }
-    
-    func start() {
+
+final class SelectionSort: BaseSort {
+    override func start() {
         var newArray: [Int] = []
         for _ in unsortedArray {
             guard let min = unsortedArray.min(),
