@@ -18,6 +18,7 @@ final class SelectionSort: BaseSort {
             }
             newArray.append(unsortedArray.remove(at: minIndex))
             sortChangeHandler(newArray + unsortedArray)
+            Thread.sleep(forTimeInterval: timeInterval)
         }
         completion?()
     }

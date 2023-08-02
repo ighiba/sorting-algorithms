@@ -9,6 +9,7 @@ import Foundation
 
 protocol MainViewModelDelegate: AnyObject {
     var array: [Int] { get }
+    var isSorting: Bool { get }
     func viewDidLoad()
     func start()
     func shuffle()
@@ -17,6 +18,7 @@ protocol MainViewModelDelegate: AnyObject {
 class MainViewModel: MainViewModelDelegate {
     
     @Published var array: [Int] = []
+    @Published var isSorting: Bool = false
     var selectedSortAlgorithm: SortAlgorithms = .selection
     
     var sortFactory: SortAlgorithmsFactory!
@@ -32,14 +34,14 @@ class MainViewModel: MainViewModelDelegate {
     }
     
     func start() {
+        self.isSorting = true
         DispatchQueue.global().async {
-            let sort = self.makeSort(algorithm: self.selectedSortAlgorithm, onChange: { newArray in
+            self.makeSort(algorithm: self.selectedSortAlgorithm, onChange: { newArray in
                 self.array = newArray
-                Thread.sleep(forTimeInterval: 0.1)
             }, onComplete: {
                 print("completed")
-            })
-            sort.start()
+                self.isSorting = false
+            }).start()
         }
     }
     

@@ -25,13 +25,7 @@ class MainViewController: NSViewController {
         
         configurePopUpButton()
         configureActions()
-        
-        viewModel.$array
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] newArray in
-                self?.mainView.sortingBarsView.update(withArray: newArray)
-            }
-            .store(in: &cancellables)
+        configureBindings()
             
         viewModel.viewDidLoad()
     }
@@ -44,6 +38,32 @@ class MainViewController: NSViewController {
         mainView.sortListPopUp.action = #selector(sortSelected)
         mainView.startButton.action = #selector(startButtonTapped)
         mainView.shuffleButton.action = #selector(shuffleButtonTapped)
+    }
+    
+    func configureBindings() {
+        viewModel.$array
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] newArray in
+                self?.mainView.sortingBarsView.update(withArray: newArray)
+            }
+            .store(in: &cancellables)
+        
+        let buttonsIsEnabledPublisher = viewModel.$isSorting
+            .receive(on: DispatchQueue.main)
+            .map { !$0 }
+            .share()
+        
+        buttonsIsEnabledPublisher
+            .assign(to: \.isEnabled, on: mainView.startButton)
+            .store(in: &cancellables)
+        
+        buttonsIsEnabledPublisher
+            .assign(to: \.isEnabled, on: mainView.shuffleButton)
+            .store(in: &cancellables)
+        
+        buttonsIsEnabledPublisher
+            .assign(to: \.isEnabled, on: mainView.sortListPopUp)
+            .store(in: &cancellables)
     }
 }
 

@@ -8,11 +8,13 @@
 import Foundation
 
 protocol Sort {
+    var timeInterval: TimeInterval { get set }
     init(unsortedArray: [Int], sortChangeHandler: @escaping ([Int]) -> Void, completion: (() -> Void)?)
     func start()
 }
 
 class BaseSort: Sort {
+    var timeInterval: TimeInterval = TimeInterval(0.1)
     var unsortedArray: [Int]
     let sortChangeHandler: ([Int]) -> Void
     let completion: (() -> Void)?
