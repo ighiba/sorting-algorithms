@@ -23,6 +23,9 @@ class MainViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configurePopUpButton()
+        configureActions()
+        
         viewModel.$array
             .receive(on: DispatchQueue.main)
             .sink { [weak self] newArray in
@@ -30,6 +33,35 @@ class MainViewController: NSViewController {
             }
             .store(in: &cancellables)
             
+        //viewModel.viewDidLoad()
+    }
+    
+    func configurePopUpButton() {
+        mainView.sortListPopUp.configure(selectedItem: viewModel.selectedSortAlgorithm)
+    }
+    
+    func configureActions() {
+        mainView.sortListPopUp.action = #selector(sortSelected)
+        mainView.startButton.action = #selector(startButtonTapped)
+        mainView.shuffleButton.action = #selector(shuffleButtonTapped)
+    }
+}
+
+extension MainViewController {
+    @objc func sortSelected(_ sender: NSPopUpButton) {
+        guard let title = sender.selectedItem?.title,
+              let sort = SortAlgorithms(rawValue: title)
+        else {
+            return
+        }
+        print("\(sort.rawValue)")
+    }
+    
+    @objc func startButtonTapped(_ sender: NSButton) {
         viewModel.start()
+    }
+    
+    @objc func shuffleButtonTapped(_ sender: NSButton) {
+        viewModel.shuffle()
     }
 }
