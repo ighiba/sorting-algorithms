@@ -15,6 +15,7 @@
 		C06A52802A7A73030035DB99 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A527C2A7A73030035DB99 /* MainController.swift */; };
 		C06A52812A7A73030035DB99 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A527D2A7A73030035DB99 /* MainView.swift */; };
 		C06A52822A7A73030035DB99 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A527E2A7A73030035DB99 /* MainViewModel.swift */; };
+		C06A52882A7A80620035DB99 /* WindowSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52872A7A80620035DB99 /* WindowSize.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		C06A527C2A7A73030035DB99 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		C06A527D2A7A73030035DB99 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C06A527E2A7A73030035DB99 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		C06A52872A7A80620035DB99 /* WindowSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowSize.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			children = (
 				C06A526A2A7A71A30035DB99 /* AppDelegate.swift */,
 				C06A526C2A7A71A30035DB99 /* ViewController.swift */,
+				C06A52852A7A80370035DB99 /* Models */,
 				C06A52792A7A72D60035DB99 /* Screens */,
 				C06A526E2A7A71A40035DB99 /* Assets.xcassets */,
 				C06A52702A7A71A40035DB99 /* Main.storyboard */,
@@ -103,6 +106,22 @@
 				C06A527E2A7A73030035DB99 /* MainViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C06A52852A7A80370035DB99 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C06A52862A7A80410035DB99 /* Constants */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C06A52862A7A80410035DB99 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				C06A52872A7A80620035DB99 /* WindowSize.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,6 +198,7 @@
 				C06A527F2A7A73030035DB99 /* MainModuleAssembly.swift in Sources */,
 				C06A526D2A7A71A30035DB99 /* ViewController.swift in Sources */,
 				C06A52812A7A73030035DB99 /* MainView.swift in Sources */,
+				C06A52882A7A80620035DB99 /* WindowSize.swift in Sources */,
 				C06A526B2A7A71A30035DB99 /* AppDelegate.swift in Sources */,
 				C06A52822A7A73030035DB99 /* MainViewModel.swift in Sources */,
 			);

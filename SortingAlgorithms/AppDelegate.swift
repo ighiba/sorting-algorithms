@@ -38,18 +38,17 @@ extension AppDelegate {
     }
     
     private func configureMainWindow(for contentViewController: NSViewController) -> NSWindow {
-        let windowSize = NSSize(width: 600, height: 400)
         
         let newWindow = NSWindow(
-            contentRect: NSRect(origin: CGPoint(), size: windowSize),
+            contentRect: NSRect(origin: CGPoint(), size: .windowSize),
             styleMask: [.titled, .closable, .miniaturizable],
             backing: .buffered,
             defer: false
         )
         newWindow.contentViewController = contentViewController
         
-        newWindow.contentMinSize = windowSize
-        newWindow.contentMaxSize = windowSize
+        newWindow.contentMinSize = .windowSize
+        newWindow.contentMaxSize = .windowSize
 
         newWindow.title = "SortingAlgorithms"
         newWindow.delegate = self
