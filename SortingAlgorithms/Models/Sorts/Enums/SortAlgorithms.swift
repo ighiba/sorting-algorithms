@@ -12,4 +12,5 @@ protocol TitledCaseIterable: CaseIterable, RawRepresentable where RawValue == St
 enum SortAlgorithms: String, TitledCaseIterable {
     case selection = "Selection sort"
     case insertion = "Insertion sort"
+    case bubble = "Bubble sort"
 }

@@ -18,7 +18,7 @@ extension BarType {
         let type: BarType
         if case .select(let index) = sortAction, index == currentIndex {
             type = .selected
-        } else if case .swap(let index) = sortAction, index == currentIndex {
+        } else if case .swap(let index, let swoppedIndex) = sortAction, index == currentIndex || swoppedIndex == currentIndex {
             type = .swopped
         } else {
             type = .standart

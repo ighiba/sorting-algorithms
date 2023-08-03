@@ -52,6 +52,7 @@ class MainViewController: NSViewController {
         
         viewModel.$sortStatistics
             .receive(on: DispatchQueue.main)
+            //.throttle(for: 0.1, scheduler: DispatchQueue.main, latest: true)
             .sink { [weak self] statistics in
                 self?.mainView.sortStatisticsView.update(withStatistics: statistics)
             }

@@ -26,6 +26,8 @@ class SortFactoryImpl: SortFactory {
             return concreteSortFactory.makeSelectionSort(sortInput: sortInput)
         case .insertion:
             return concreteSortFactory.makeInsertionSort(sortInput: sortInput)
+        case .bubble:
+            return concreteSortFactory.makeBubbleSort(sortInput: sortInput)
         }
     }
 }

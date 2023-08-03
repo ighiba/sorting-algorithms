@@ -11,7 +11,6 @@ typealias SortInput = (unsortedArray: [Int], sortChangeHandler: ((SortChange) ->
 typealias SortChange = (array: [Int], sortAction: SortAction?)
 
 protocol Sort {
-    var timeInterval: TimeInterval { get set }
     init(sortInput: SortInput)
     func start()
 }
@@ -20,7 +19,7 @@ class BaseSort: Sort {
     @Published var comparisonsCount: Int = 0
     @Published var swapsCount: Int = 0
     
-    var timeInterval: TimeInterval = TimeInterval(0.05)
+    var timeInterval: TimeInterval { return TimeInterval(0.05) }
     var unsortedArray: [Int]
     let sortChangeHandler: ((SortChange) -> Void)?
     let completion: (() -> Void)?
@@ -32,7 +31,7 @@ class BaseSort: Sort {
     }
     
     func start() {
-        // Implement in childs
+        // Implement in child
     }
     
     func handleSelect(_ array: [Int], currentIndex: Int) {
@@ -40,8 +39,8 @@ class BaseSort: Sort {
         Thread.sleep(forTimeInterval: timeInterval)
     }
     
-    func handleSwap(_ array: [Int], currentIndex: Int) {
-        sortChangeHandler?((array, .swap(currentIndex)))
+    func handleSwap(_ array: [Int], currentIndex: Int, swoppedIndex: Int? = nil) {
+        sortChangeHandler?((array, .swap(currentIndex, swoppedIndex)))
         swapsCount.inc()
         Thread.sleep(forTimeInterval: timeInterval)
     }

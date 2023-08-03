@@ -33,7 +33,6 @@ final class InsertionSort: BaseSort {
                 handleSwap(unsortedArray, currentIndex: index)
             }
         }
-        sortChangeHandler?((array: unsortedArray, sortAction: nil))
-        completion?()
+        handleCompletion(resultArray: unsortedArray)
     }
 }

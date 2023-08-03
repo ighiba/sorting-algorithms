@@ -27,7 +27,7 @@ class MainViewModel: MainViewModelDelegate {
     @Published var sortStatistics: SortStatistics
     @Published var isSorting: Bool = false
     
-    var currentSortAlgorithm: SortAlgorithms = .insertion
+    var currentSortAlgorithm: SortAlgorithms = .selection
     
     var sortFactory: SortFactory!
  

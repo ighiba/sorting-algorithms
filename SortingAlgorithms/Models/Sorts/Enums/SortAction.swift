@@ -9,5 +9,5 @@ import Foundation
 
 enum SortAction {
     case select(Int)
-    case swap(Int)
+    case swap(Int, Int?)
 }

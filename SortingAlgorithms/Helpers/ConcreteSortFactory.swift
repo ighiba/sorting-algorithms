@@ -10,6 +10,7 @@ import Foundation
 protocol ConcreteSortFactory: AnyObject {
     func makeSelectionSort(sortInput: SortInput) -> SelectionSort
     func makeInsertionSort(sortInput: SortInput) -> InsertionSort
+    func makeBubbleSort(sortInput: SortInput) -> BubbleSort
 }
 
 class SortAlgorithmsFactoryImpl: ConcreteSortFactory {
@@ -18,6 +19,10 @@ class SortAlgorithmsFactoryImpl: ConcreteSortFactory {
     }
     
     func makeInsertionSort(sortInput: SortInput) -> InsertionSort {
+        return makeSort(sortInput: sortInput)
+    }
+    
+    func makeBubbleSort(sortInput: SortInput) -> BubbleSort {
         return makeSort(sortInput: sortInput)
     }
     
