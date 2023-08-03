@@ -17,13 +17,13 @@ protocol MainViewModelDelegate: AnyObject {
 
 class MainViewModel: MainViewModelDelegate {
     
-    // MARK: - Methods
+    // MARK: - Properties
     
     @Published var sortChange: SortChange
     @Published var isSorting: Bool = false
-    var selectedSortAlgorithm: SortAlgorithms = .selection
+    var currentSortAlgorithm: SortAlgorithms = .selection
     
-    var sortFactory: SortAlgorithmsFactory!
+    var sortFactory: SortFactory!
     
     // MARK: - Init
         
@@ -41,29 +41,16 @@ class MainViewModel: MainViewModelDelegate {
     }
     
     func start() {
-        guard isNotSorted(sortChange.array) else { return }
+        guard sortChange.array.isNotSorted() else { return }
         isSorting = true
-        makeSort(algorithm: selectedSortAlgorithm, onChange: { [weak self] sortChange in
+        sortFactory.makeSort(algorithm: currentSortAlgorithm, array: sortChange.array, onChange: { [weak self] sortChange in
             self?.sortChange = sortChange
         }, onComplete: { [weak self] in
-            print("completed")
             self?.isSorting = false
         }).start()
     }
     
-    private func isNotSorted(_ array: [Int]) -> Bool {
-        return array != array.sorted()
-    }
-    
     func shuffle() {
         sortChange.array.shuffle()
-    }
-
-    private func makeSort(algorithm: SortAlgorithms, onChange: ((SortChange) -> Void)?, onComplete: (() -> Void)? = nil) -> Sort {
-        let sortInput = SortInput(sortChange.array, onChange, onComplete)
-        switch algorithm {
-        case .selection:
-            return sortFactory.makeSelectionSort(sortInput: sortInput)
-        }
     }
 }

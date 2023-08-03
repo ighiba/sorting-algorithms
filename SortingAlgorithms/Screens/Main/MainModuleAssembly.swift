@@ -14,7 +14,8 @@ class MainModuleAssembly {
 
         view.viewModel = viewModel
         
-        viewModel.sortFactory = SortAlgorithmsFactoryImpl()
+        let concreteSortFactory = SortAlgorithmsFactoryImpl()
+        viewModel.sortFactory = SortFactoryImpl(concreteSortFactory: concreteSortFactory)
 
         return view
     }

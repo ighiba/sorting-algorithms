@@ -1,5 +1,5 @@
 //
-//  SortAlgorithmsFactory.swift
+//  ConcreteSortFactory.swift
 //  SortingAlgorithms
 //
 //  Created by Ivan Ghiba on 03.08.2023.
@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol SortAlgorithmsFactory: AnyObject {
+protocol ConcreteSortFactory: AnyObject {
     func makeSelectionSort(sortInput: SortInput) -> SelectionSort
 }
 
-class SortAlgorithmsFactoryImpl: SortAlgorithmsFactory {
+class SortAlgorithmsFactoryImpl: ConcreteSortFactory {
     func makeSelectionSort(sortInput: SortInput) -> SelectionSort {
         return makeSort(sortInput: sortInput)
     }

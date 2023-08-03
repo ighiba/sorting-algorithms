@@ -22,11 +22,13 @@
 		C06A52992A7AF2D50035DB99 /* SortAlgorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52982A7AF2D50035DB99 /* SortAlgorithms.swift */; };
 		C06A529B2A7AFF180035DB99 /* BaseSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A529A2A7AFF180035DB99 /* BaseSort.swift */; };
 		C06A529E2A7B01460035DB99 /* SelectablePopUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A529D2A7B01460035DB99 /* SelectablePopUpButton.swift */; };
-		C06A52A12A7B058E0035DB99 /* SortAlgorithmsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52A02A7B058E0035DB99 /* SortAlgorithmsFactory.swift */; };
+		C06A52A12A7B058E0035DB99 /* ConcreteSortFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52A02A7B058E0035DB99 /* ConcreteSortFactory.swift */; };
 		C06A52A32A7B26BE0035DB99 /* SortAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52A22A7B26BE0035DB99 /* SortAction.swift */; };
 		C06A52A62A7B279F0035DB99 /* BarType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52A52A7B279F0035DB99 /* BarType.swift */; };
 		C06A52A92A7BC21B0035DB99 /* CalculateBarModelsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52A82A7BC21B0035DB99 /* CalculateBarModelsOperation.swift */; };
 		C06A52AB2A7BC22C0035DB99 /* DrawFieldOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52AA2A7BC22C0035DB99 /* DrawFieldOperation.swift */; };
+		C06A52AD2A7BD41F0035DB99 /* Array+Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52AC2A7BD41F0035DB99 /* Array+Int.swift */; };
+		C06A52AF2A7BDB190035DB99 /* SortFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52AE2A7BDB190035DB99 /* SortFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,11 +49,13 @@
 		C06A52982A7AF2D50035DB99 /* SortAlgorithms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortAlgorithms.swift; sourceTree = "<group>"; };
 		C06A529A2A7AFF180035DB99 /* BaseSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSort.swift; sourceTree = "<group>"; };
 		C06A529D2A7B01460035DB99 /* SelectablePopUpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectablePopUpButton.swift; sourceTree = "<group>"; };
-		C06A52A02A7B058E0035DB99 /* SortAlgorithmsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortAlgorithmsFactory.swift; sourceTree = "<group>"; };
+		C06A52A02A7B058E0035DB99 /* ConcreteSortFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcreteSortFactory.swift; sourceTree = "<group>"; };
 		C06A52A22A7B26BE0035DB99 /* SortAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortAction.swift; sourceTree = "<group>"; };
 		C06A52A52A7B279F0035DB99 /* BarType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarType.swift; sourceTree = "<group>"; };
 		C06A52A82A7BC21B0035DB99 /* CalculateBarModelsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateBarModelsOperation.swift; sourceTree = "<group>"; };
 		C06A52AA2A7BC22C0035DB99 /* DrawFieldOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawFieldOperation.swift; sourceTree = "<group>"; };
+		C06A52AC2A7BD41F0035DB99 /* Array+Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Int.swift"; sourceTree = "<group>"; };
+		C06A52AE2A7BDB190035DB99 /* SortFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				C06A52932A7A98700035DB99 /* NSColor.swift */,
+				C06A52AC2A7BD41F0035DB99 /* Array+Int.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -206,7 +211,8 @@
 		C06A529F2A7B057E0035DB99 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				C06A52A02A7B058E0035DB99 /* SortAlgorithmsFactory.swift */,
+				C06A52AE2A7BDB190035DB99 /* SortFactory.swift */,
+				C06A52A02A7B058E0035DB99 /* ConcreteSortFactory.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -299,6 +305,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C06A52AF2A7BDB190035DB99 /* SortFactory.swift in Sources */,
 				C06A52802A7A73030035DB99 /* MainController.swift in Sources */,
 				C06A528C2A7A83CB0035DB99 /* SortingBarsView.swift in Sources */,
 				C06A529E2A7B01460035DB99 /* SelectablePopUpButton.swift in Sources */,
@@ -308,9 +315,10 @@
 				C06A52972A7AB1760035DB99 /* SelectionSort.swift in Sources */,
 				C06A52942A7A98700035DB99 /* NSColor.swift in Sources */,
 				C06A52AB2A7BC22C0035DB99 /* DrawFieldOperation.swift in Sources */,
+				C06A52AD2A7BD41F0035DB99 /* Array+Int.swift in Sources */,
 				C06A52992A7AF2D50035DB99 /* SortAlgorithms.swift in Sources */,
 				C06A52882A7A80620035DB99 /* WindowSize.swift in Sources */,
-				C06A52A12A7B058E0035DB99 /* SortAlgorithmsFactory.swift in Sources */,
+				C06A52A12A7B058E0035DB99 /* ConcreteSortFactory.swift in Sources */,
 				C06A526B2A7A71A30035DB99 /* AppDelegate.swift in Sources */,
 				C06A52822A7A73030035DB99 /* MainViewModel.swift in Sources */,
 				C06A52A32A7B26BE0035DB99 /* SortAction.swift in Sources */,

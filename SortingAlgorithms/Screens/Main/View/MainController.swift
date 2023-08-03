@@ -33,7 +33,7 @@ class MainViewController: NSViewController {
     // MARK: - Methods
     
     func configurePopUpButton() {
-        mainView.sortListPopUp.configure(selectedItem: viewModel.selectedSortAlgorithm)
+        mainView.sortListPopUp.configure(selectedItem: viewModel.currentSortAlgorithm)
     }
     
     func configureActions() {
