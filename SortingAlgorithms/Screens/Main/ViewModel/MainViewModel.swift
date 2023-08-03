@@ -56,17 +56,14 @@ class MainViewModel: MainViewModelDelegate {
     }
     
     func shuffle() {
-        sortChange.0.shuffle()
+        sortChange.array.shuffle()
     }
 
-    private func makeSort(algorithm: SortAlgorithms, onChange: @escaping (SortChange) -> Void, onComplete: (() -> Void)? = nil) -> Sort {
+    private func makeSort(algorithm: SortAlgorithms, onChange: ((SortChange) -> Void)?, onComplete: (() -> Void)? = nil) -> Sort {
+        let sortInput = SortInput(sortChange.array, onChange, onComplete)
         switch algorithm {
         case .selection:
-            return sortFactory.makeSelectionSort(
-                unsortedArray: sortChange.0,
-                sortChangeHandler: onChange,
-                completion: onComplete
-            )
+            return sortFactory.makeSelectionSort(sortInput: sortInput)
         }
     }
 }

@@ -8,15 +8,15 @@
 import Foundation
 
 protocol SortAlgorithmsFactory: AnyObject {
-    func makeSelectionSort(unsortedArray: [Int], sortChangeHandler: @escaping (SortChange) -> Void, completion: (() -> Void)?) -> SelectionSort
+    func makeSelectionSort(sortInput: SortInput) -> SelectionSort
 }
 
 class SortAlgorithmsFactoryImpl: SortAlgorithmsFactory {
-    func makeSelectionSort(unsortedArray: [Int], sortChangeHandler: @escaping (SortChange) -> Void, completion: (() -> Void)?) -> SelectionSort {
-        return makeSort(unsortedArray: unsortedArray, sortChangeHandler: sortChangeHandler, completion: completion)
+    func makeSelectionSort(sortInput: SortInput) -> SelectionSort {
+        return makeSort(sortInput: sortInput)
     }
     
-    private func makeSort<S: Sort>(unsortedArray: [Int],sortChangeHandler: @escaping (SortChange) -> Void,completion: (() -> Void)?) -> S {
-        return S(unsortedArray: unsortedArray, sortChangeHandler: sortChangeHandler,completion: completion)
+    private func makeSort<S: Sort>(sortInput: SortInput) -> S {
+        return S(sortInput: sortInput)
     }
 }

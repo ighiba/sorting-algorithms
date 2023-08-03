@@ -23,15 +23,15 @@ final class SelectionSort: BaseSort {
                 break
             }
             var currentIndex = minIndex + newArray.count
-            sortChangeHandler((newArray + unsortedArray, .select(currentIndex)))
+            sortChangeHandler?((newArray + unsortedArray, .select(currentIndex)))
             Thread.sleep(forTimeInterval: timeInterval)
             
             newArray.append(unsortedArray.remove(at: minIndex))
             currentIndex = newArray.count - 1
-            sortChangeHandler((newArray + unsortedArray, .swap(currentIndex)))
+            sortChangeHandler?((newArray + unsortedArray, .swap(currentIndex)))
             Thread.sleep(forTimeInterval: timeInterval)
         }
-        sortChangeHandler((array: newArray, sortAction: nil))
+        sortChangeHandler?((array: newArray, sortAction: nil))
         completion?()
     }
 }
