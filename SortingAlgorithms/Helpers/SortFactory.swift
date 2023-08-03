@@ -28,6 +28,8 @@ class SortFactoryImpl: SortFactory {
             return concreteSortFactory.makeInsertionSort(sortInput: sortInput)
         case .bubble:
             return concreteSortFactory.makeBubbleSort(sortInput: sortInput)
+        case .shell:
+            return concreteSortFactory.makeShellSort(sortInput: sortInput)
         }
     }
 }
