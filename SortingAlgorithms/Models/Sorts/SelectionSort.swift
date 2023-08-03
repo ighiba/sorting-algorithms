@@ -9,6 +9,12 @@ import Foundation
 
 final class SelectionSort: BaseSort {
     override func start() {
+        DispatchQueue.global().async {
+            self.startSelectionSort()
+        }
+    }
+    
+    private func startSelectionSort() {
         var newArray: [Int] = []
         for _ in unsortedArray {
             guard let min = unsortedArray.min(),

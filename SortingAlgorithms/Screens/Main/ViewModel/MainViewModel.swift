@@ -35,29 +35,31 @@ class MainViewModel: MainViewModelDelegate {
     // MARK: - Methods
     
     func viewDidLoad() {
-        DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.start()
         }
     }
     
     func start() {
-        self.isSorting = true
-        DispatchQueue.global().async {
-            self.makeSort(algorithm: self.selectedSortAlgorithm, onChange: { (newArray, sortAction) in
-                self.sortChange.0 = newArray
-                self.sortChange.1 = sortAction
-            }, onComplete: {
-                print("completed")
-                self.isSorting = false
-            }).start()
-        }
+        guard isNotSorted(sortChange.array) else { return }
+        isSorting = true
+        makeSort(algorithm: selectedSortAlgorithm, onChange: { [weak self] sortChange in
+            self?.sortChange = sortChange
+        }, onComplete: { [weak self] in
+            print("completed")
+            self?.isSorting = false
+        }).start()
+    }
+    
+    private func isNotSorted(_ array: [Int]) -> Bool {
+        return array != array.sorted()
     }
     
     func shuffle() {
         sortChange.0.shuffle()
     }
-    
-    private func makeSort(algorithm: SortAlgorithms, onChange: @escaping ([Int], SortAction?) -> Void, onComplete: (() -> Void)? = nil) -> Sort {
+
+    private func makeSort(algorithm: SortAlgorithms, onChange: @escaping (SortChange) -> Void, onComplete: (() -> Void)? = nil) -> Sort {
         switch algorithm {
         case .selection:
             return sortFactory.makeSelectionSort(

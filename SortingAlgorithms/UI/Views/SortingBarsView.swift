@@ -15,7 +15,15 @@ class SortingBarsView: NSView, SortingView {
     
     // MARK: - Properties
     
-    private let baseBarColor = NSColor.white.multiply(by: 0.9)
+    private let mainQueue = OperationQueue.main
+    private let calculationQueue: OperationQueue = {
+        let queue = OperationQueue()
+        queue.maxConcurrentOperationCount = 1
+        queue.qualityOfService = .userInitiated
+        return queue
+    }()
+    
+    private let baseBarColor: NSColor = .white.multiply(by: 0.9)
     
     private var barField: CALayer? {
         didSet {
@@ -48,31 +56,22 @@ class SortingBarsView: NSView, SortingView {
         barField.frame = self.bounds
     }
     
+    // MARK: - Update
+    
     func update(withChange change: SortChange) {
-        guard !change.array.isEmpty else { return }
-        let (frameWidth, frameHeight) = (self.frame.width, self.frame.height)
-        let barWidth = frameWidth / CGFloat(change.0.count)
-        let maxBarHeight = frameHeight
-        let maxElementValue = change.0.max() ?? 0
+        let calculateBarModelsOperation = CalculateBarModelsOperation(frameSize: self.frame.size, change: change)
         
-        let barModels = change.0.enumerated().map { enumerated in
-            let (element, index) = (enumerated.element, enumerated.offset)
-            let xOffset = CGFloat(index) * barWidth
-            let value = CGFloat(element) / CGFloat(maxElementValue)
-            let barHeight = maxBarHeight * value
-            let barRect = NSRect(
-                x: xOffset,
-                y: 0,
-                width: barWidth,
-                height: barHeight
-            )
-            let type = BarType.obtain(forAction: change.1, currentIndex: index)
-            
-            return BarModel(type: type, value: value, rect: barRect)
+        let drawFieldOperation = DrawFieldOperation { [weak self] barModels in
+            self?.barField = self?.drawField(barModels)
         }
         
-        barField = drawField(barModels)
+        drawFieldOperation.addDependency(calculateBarModelsOperation)
+        
+        calculationQueue.addOperation(calculateBarModelsOperation)
+        mainQueue.addOperation(drawFieldOperation)
     }
+    
+    // MARK: - Bars drawing
 
     private func drawField(_ barModels: [BarModel]) -> CALayer {
         let field = CALayer()
