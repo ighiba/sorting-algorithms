@@ -13,6 +13,7 @@ protocol MainViewModelDelegate: AnyObject {
     func viewDidLoad()
     func start()
     func shuffle()
+    func changeAlgorithm(_ algorithm: SortAlgorithms)
 }
 
 class MainViewModel: MainViewModelDelegate {
@@ -21,7 +22,7 @@ class MainViewModel: MainViewModelDelegate {
     
     @Published var sortChange: SortChange
     @Published var isSorting: Bool = false
-    var currentSortAlgorithm: SortAlgorithms = .selection
+    var currentSortAlgorithm: SortAlgorithms = .insertion
     
     var sortFactory: SortFactory!
     
@@ -52,5 +53,9 @@ class MainViewModel: MainViewModelDelegate {
     
     func shuffle() {
         sortChange.array.shuffle()
+    }
+    
+    func changeAlgorithm(_ algorithm: SortAlgorithms) {
+        currentSortAlgorithm = algorithm
     }
 }

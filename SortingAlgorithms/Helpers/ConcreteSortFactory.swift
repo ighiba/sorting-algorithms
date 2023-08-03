@@ -9,10 +9,15 @@ import Foundation
 
 protocol ConcreteSortFactory: AnyObject {
     func makeSelectionSort(sortInput: SortInput) -> SelectionSort
+    func makeInsertionSort(sortInput: SortInput) -> InsertionSort
 }
 
 class SortAlgorithmsFactoryImpl: ConcreteSortFactory {
     func makeSelectionSort(sortInput: SortInput) -> SelectionSort {
+        return makeSort(sortInput: sortInput)
+    }
+    
+    func makeInsertionSort(sortInput: SortInput) -> InsertionSort {
         return makeSort(sortInput: sortInput)
     }
     

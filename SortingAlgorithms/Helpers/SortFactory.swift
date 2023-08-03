@@ -24,6 +24,8 @@ class SortFactoryImpl: SortFactory {
         switch algorithm {
         case .selection:
             return concreteSortFactory.makeSelectionSort(sortInput: sortInput)
+        case .insertion:
+            return concreteSortFactory.makeInsertionSort(sortInput: sortInput)
         }
     }
 }

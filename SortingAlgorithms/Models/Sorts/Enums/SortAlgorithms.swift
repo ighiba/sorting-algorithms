@@ -7,9 +7,9 @@
 
 import Foundation
 
-protocol TitledCaseIterable: CaseIterable, RawRepresentable where RawValue == String {
-}
+protocol TitledCaseIterable: CaseIterable, RawRepresentable where RawValue == String {}
 
 enum SortAlgorithms: String, TitledCaseIterable {
     case selection = "Selection sort"
+    case insertion = "Insertion sort"
 }

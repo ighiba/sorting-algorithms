@@ -73,6 +73,7 @@ extension MainViewController {
         else {
             return
         }
+        viewModel.changeAlgorithm(sort)
         print("\(sort.rawValue)")
     }
     

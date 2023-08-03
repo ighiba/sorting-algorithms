@@ -29,6 +29,7 @@
 		C06A52AB2A7BC22C0035DB99 /* DrawFieldOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52AA2A7BC22C0035DB99 /* DrawFieldOperation.swift */; };
 		C06A52AD2A7BD41F0035DB99 /* Array+Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52AC2A7BD41F0035DB99 /* Array+Int.swift */; };
 		C06A52AF2A7BDB190035DB99 /* SortFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52AE2A7BDB190035DB99 /* SortFactory.swift */; };
+		C06A52B12A7BEDA80035DB99 /* InsertionSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52B02A7BEDA80035DB99 /* InsertionSort.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		C06A52AA2A7BC22C0035DB99 /* DrawFieldOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawFieldOperation.swift; sourceTree = "<group>"; };
 		C06A52AC2A7BD41F0035DB99 /* Array+Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Int.swift"; sourceTree = "<group>"; };
 		C06A52AE2A7BDB190035DB99 /* SortFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortFactory.swift; sourceTree = "<group>"; };
+		C06A52B02A7BEDA80035DB99 /* InsertionSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertionSort.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 				C06A52A42A7B26CC0035DB99 /* Enums */,
 				C06A529A2A7AFF180035DB99 /* BaseSort.swift */,
 				C06A52962A7AB1760035DB99 /* SelectionSort.swift */,
+				C06A52B02A7BEDA80035DB99 /* InsertionSort.swift */,
 			);
 			path = Sorts;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				C06A52AF2A7BDB190035DB99 /* SortFactory.swift in Sources */,
 				C06A52802A7A73030035DB99 /* MainController.swift in Sources */,
 				C06A528C2A7A83CB0035DB99 /* SortingBarsView.swift in Sources */,
+				C06A52B12A7BEDA80035DB99 /* InsertionSort.swift in Sources */,
 				C06A529E2A7B01460035DB99 /* SelectablePopUpButton.swift in Sources */,
 				C06A527F2A7A73030035DB99 /* MainModuleAssembly.swift in Sources */,
 				C06A52812A7A73030035DB99 /* MainView.swift in Sources */,
