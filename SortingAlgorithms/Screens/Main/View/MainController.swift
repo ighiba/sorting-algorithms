@@ -30,6 +30,8 @@ class MainViewController: NSViewController {
         viewModel.viewDidLoad()
     }
     
+    // MARK: - Methods
+    
     func configurePopUpButton() {
         mainView.sortListPopUp.configure(selectedItem: viewModel.selectedSortAlgorithm)
     }
@@ -41,31 +43,28 @@ class MainViewController: NSViewController {
     }
     
     func configureBindings() {
-        viewModel.$array
+        viewModel.$sortChange
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] newArray in
-                self?.mainView.sortingBarsView.update(withArray: newArray)
+            .sink { [weak self] changes in
+                self?.mainView.sortingBarsView.update(withChange: changes)
             }
             .store(in: &cancellables)
         
         let buttonsIsEnabledPublisher = viewModel.$isSorting
             .receive(on: DispatchQueue.main)
             .map { !$0 }
-            .share()
         
         buttonsIsEnabledPublisher
-            .assign(to: \.isEnabled, on: mainView.startButton)
-            .store(in: &cancellables)
-        
-        buttonsIsEnabledPublisher
-            .assign(to: \.isEnabled, on: mainView.shuffleButton)
-            .store(in: &cancellables)
-        
-        buttonsIsEnabledPublisher
-            .assign(to: \.isEnabled, on: mainView.sortListPopUp)
+            .sink { [weak self] isEnabled in
+                self?.mainView.sortListPopUp.isEnabled = isEnabled
+                self?.mainView.startButton.isEnabled = isEnabled
+                self?.mainView.shuffleButton.isEnabled = isEnabled
+            }
             .store(in: &cancellables)
     }
 }
+
+// MARK: - Actions
 
 extension MainViewController {
     @objc func sortSelected(_ sender: NSPopUpButton) {

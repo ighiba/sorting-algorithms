@@ -8,7 +8,7 @@
 import Foundation
 
 protocol MainViewModelDelegate: AnyObject {
-    var array: [Int] { get }
+    var sortChange: SortChange { get }
     var isSorting: Bool { get }
     func viewDidLoad()
     func start()
@@ -17,15 +17,22 @@ protocol MainViewModelDelegate: AnyObject {
 
 class MainViewModel: MainViewModelDelegate {
     
-    @Published var array: [Int] = []
+    // MARK: - Methods
+    
+    @Published var sortChange: SortChange
     @Published var isSorting: Bool = false
     var selectedSortAlgorithm: SortAlgorithms = .selection
     
     var sortFactory: SortAlgorithmsFactory!
+    
+    // MARK: - Init
         
     init() {
-        self.array = ((1...50).map { $0 }).shuffled()
+        let array = ((1...50).map { $0 }).shuffled()
+        self.sortChange = (array, nil)
     }
+    
+    // MARK: - Methods
     
     func viewDidLoad() {
         DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
@@ -36,8 +43,9 @@ class MainViewModel: MainViewModelDelegate {
     func start() {
         self.isSorting = true
         DispatchQueue.global().async {
-            self.makeSort(algorithm: self.selectedSortAlgorithm, onChange: { newArray in
-                self.array = newArray
+            self.makeSort(algorithm: self.selectedSortAlgorithm, onChange: { (newArray, sortAction) in
+                self.sortChange.0 = newArray
+                self.sortChange.1 = sortAction
             }, onComplete: {
                 print("completed")
                 self.isSorting = false
@@ -46,14 +54,14 @@ class MainViewModel: MainViewModelDelegate {
     }
     
     func shuffle() {
-        array.shuffle()
+        sortChange.0.shuffle()
     }
     
-    private func makeSort(algorithm: SortAlgorithms, onChange: @escaping ([Int]) -> Void, onComplete: (() -> Void)? = nil) -> Sort {
+    private func makeSort(algorithm: SortAlgorithms, onChange: @escaping ([Int], SortAction?) -> Void, onComplete: (() -> Void)? = nil) -> Sort {
         switch algorithm {
         case .selection:
             return sortFactory.makeSelectionSort(
-                unsortedArray: array,
+                unsortedArray: sortChange.0,
                 sortChangeHandler: onChange,
                 completion: onComplete
             )

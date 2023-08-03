@@ -8,6 +8,7 @@
 import Foundation
 
 struct BarModel {
+    var type: BarType
     var value: CGFloat
     var rect: NSRect
 }

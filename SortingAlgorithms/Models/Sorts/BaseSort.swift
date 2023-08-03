@@ -7,21 +7,23 @@
 
 import Foundation
 
+typealias SortChange = (array: [Int], sortAction: SortAction?)
+
 protocol Sort {
     var timeInterval: TimeInterval { get set }
-    init(unsortedArray: [Int], sortChangeHandler: @escaping ([Int]) -> Void, completion: (() -> Void)?)
+    init(unsortedArray: [Int], sortChangeHandler: @escaping (SortChange) -> Void, completion: (() -> Void)?)
     func start()
 }
 
 class BaseSort: Sort {
-    var timeInterval: TimeInterval = TimeInterval(0.1)
+    var timeInterval: TimeInterval = TimeInterval(0.05)
     var unsortedArray: [Int]
-    let sortChangeHandler: ([Int]) -> Void
+    let sortChangeHandler: (SortChange) -> Void
     let completion: (() -> Void)?
     
     required init(
         unsortedArray: [Int],
-        sortChangeHandler: @escaping ([Int]) -> Void,
+        sortChangeHandler: @escaping (SortChange) -> Void,
         completion: (() -> Void)? = nil
     ) {
         self.unsortedArray = unsortedArray

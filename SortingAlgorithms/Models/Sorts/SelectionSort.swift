@@ -16,10 +16,16 @@ final class SelectionSort: BaseSort {
             else {
                 break
             }
+            var currentIndex = minIndex + newArray.count
+            sortChangeHandler((newArray + unsortedArray, .select(currentIndex)))
+            Thread.sleep(forTimeInterval: timeInterval)
+            
             newArray.append(unsortedArray.remove(at: minIndex))
-            sortChangeHandler(newArray + unsortedArray)
+            currentIndex = newArray.count - 1
+            sortChangeHandler((newArray + unsortedArray, .swap(currentIndex)))
             Thread.sleep(forTimeInterval: timeInterval)
         }
+        sortChangeHandler((array: newArray, sortAction: nil))
         completion?()
     }
 }

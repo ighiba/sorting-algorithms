@@ -8,7 +8,7 @@
 import Cocoa
 
 protocol SortingView: NSView {
-    func update(withArray array: [Int])
+    func update(withChange change: (SortChange))
 }
 
 class SortingBarsView: NSView, SortingView {
@@ -27,7 +27,6 @@ class SortingBarsView: NSView, SortingView {
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
-        setViews()
     }
     
     required init?(coder: NSCoder) {
@@ -41,11 +40,7 @@ class SortingBarsView: NSView, SortingView {
         dirtyRect.fill()
         super.draw(dirtyRect)
     }
-    
-    func setViews() {
 
-    }
-    
     func configureBarField() {
         guard let barField = self.barField else { return }
         self.layer?.sublayers?.removeAll()
@@ -53,16 +48,17 @@ class SortingBarsView: NSView, SortingView {
         barField.frame = self.bounds
     }
     
-    func update(withArray array: [Int]) {
-        guard !array.isEmpty else { return }
+    func update(withChange change: SortChange) {
+        guard !change.array.isEmpty else { return }
         let (frameWidth, frameHeight) = (self.frame.width, self.frame.height)
-        let barWidth = frameWidth / CGFloat(array.count)
+        let barWidth = frameWidth / CGFloat(change.0.count)
         let maxBarHeight = frameHeight
-        let maxElementValue = array.max() ?? 0
+        let maxElementValue = change.0.max() ?? 0
         
-        let barModels = array.enumerated().map { enumerated in
-            let xOffset = CGFloat(enumerated.offset) * barWidth
-            let value = CGFloat(enumerated.element) / CGFloat(maxElementValue)
+        let barModels = change.0.enumerated().map { enumerated in
+            let (element, index) = (enumerated.element, enumerated.offset)
+            let xOffset = CGFloat(index) * barWidth
+            let value = CGFloat(element) / CGFloat(maxElementValue)
             let barHeight = maxBarHeight * value
             let barRect = NSRect(
                 x: xOffset,
@@ -70,8 +66,11 @@ class SortingBarsView: NSView, SortingView {
                 width: barWidth,
                 height: barHeight
             )
-            return BarModel(value: value, rect: barRect)
+            let type = BarType.obtain(forAction: change.1, currentIndex: index)
+            
+            return BarModel(type: type, value: value, rect: barRect)
         }
+        
         barField = drawField(barModels)
     }
 
@@ -87,8 +86,17 @@ class SortingBarsView: NSView, SortingView {
     private func drawBar(_ barModel: BarModel) -> CALayer {
         let bar = CALayer()
         bar.frame = barModel.rect
-        bar.backgroundColor = calculateColor(for: barModel.value).cgColor
+        bar.backgroundColor = barColor(forType: barModel.type, value: barModel.value).cgColor
         return bar
+    }
+    
+    private func barColor(forType type: BarType, value: CGFloat) -> NSColor {
+        switch type {
+        case .standart:
+            return calculateColor(for: value)
+        case .selected, .swopped:
+            return NSColor.red
+        }
     }
     
     private func calculateColor(for value: CGFloat) -> NSColor {
