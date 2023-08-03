@@ -11,8 +11,8 @@ private let popUpButtonWidht: CGFloat = 150
 private let buttonsHorizontalOffset: CGFloat = 30
 
 class MainView: NSView {
-    
     let sortingBarsView = SortingBarsView()
+    let sortStatisticsView = SortStatisticsView()
     let sortListPopUp = SelectablePopUpButton()
     let startButton = NSButton(title: "Start", target: nil, action: nil)
     let shuffleButton = NSButton(title: "Shuffle", target: nil, action: nil)
@@ -31,11 +31,13 @@ class MainView: NSView {
         self.addLayoutGuide(buttonsLayoutGuide)
         
         self.addSubview(sortingBarsView)
+        self.addSubview(sortStatisticsView)
         self.addSubview(sortListPopUp)
         self.addSubview(startButton)
         self.addSubview(shuffleButton)
         
         sortingBarsView.translatesAutoresizingMaskIntoConstraints = false
+        sortStatisticsView.translatesAutoresizingMaskIntoConstraints = false
         sortListPopUp.translatesAutoresizingMaskIntoConstraints = false
         startButton.translatesAutoresizingMaskIntoConstraints = false
         shuffleButton.translatesAutoresizingMaskIntoConstraints = false
@@ -59,7 +61,10 @@ class MainView: NSView {
             startButton.centerYAnchor.constraint(equalTo: buttonsLayoutGuide.centerYAnchor),
             
             shuffleButton.centerYAnchor.constraint(equalTo: buttonsLayoutGuide.centerYAnchor),
-            shuffleButton.leadingAnchor.constraint(equalTo: startButton.trailingAnchor, constant: buttonsHorizontalOffset)
+            shuffleButton.leadingAnchor.constraint(equalTo: startButton.trailingAnchor, constant: buttonsHorizontalOffset),
+            
+            sortStatisticsView.centerYAnchor.constraint(equalTo: buttonsLayoutGuide.centerYAnchor),
+            sortStatisticsView.leadingAnchor.constraint(equalTo: shuffleButton.trailingAnchor, constant: buttonsHorizontalOffset)
         ])
     }
     

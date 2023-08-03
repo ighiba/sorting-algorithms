@@ -50,11 +50,16 @@ class MainViewController: NSViewController {
             }
             .store(in: &cancellables)
         
-        let buttonsIsEnabledPublisher = viewModel.$isSorting
+        viewModel.$sortStatistics
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] statistics in
+                self?.mainView.sortStatisticsView.update(withStatistics: statistics)
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$isSorting
             .receive(on: DispatchQueue.main)
             .map { !$0 }
-        
-        buttonsIsEnabledPublisher
             .sink { [weak self] isEnabled in
                 self?.mainView.sortListPopUp.isEnabled = isEnabled
                 self?.mainView.startButton.isEnabled = isEnabled

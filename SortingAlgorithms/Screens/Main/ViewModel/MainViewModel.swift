@@ -6,6 +6,9 @@
 //
 
 import Foundation
+import Combine
+
+typealias SortStatistics = (comparisons: Int, swaps: Int)
 
 protocol MainViewModelDelegate: AnyObject {
     var sortChange: SortChange { get }
@@ -21,16 +24,19 @@ class MainViewModel: MainViewModelDelegate {
     // MARK: - Properties
     
     @Published var sortChange: SortChange
+    @Published var sortStatistics: SortStatistics
     @Published var isSorting: Bool = false
+    
     var currentSortAlgorithm: SortAlgorithms = .insertion
     
     var sortFactory: SortFactory!
-    
+ 
     // MARK: - Init
         
     init() {
         let array = ((1...50).map { $0 }).shuffled()
         self.sortChange = (array, nil)
+        self.sortStatistics = (0, 0)
     }
     
     // MARK: - Methods
@@ -44,15 +50,29 @@ class MainViewModel: MainViewModelDelegate {
     func start() {
         guard sortChange.array.isNotSorted() else { return }
         isSorting = true
-        sortFactory.makeSort(algorithm: currentSortAlgorithm, array: sortChange.array, onChange: { [weak self] sortChange in
+        let sort = sortFactory.makeSort(algorithm: currentSortAlgorithm, array: sortChange.array, onChange: { [weak self] sortChange in
             self?.sortChange = sortChange
         }, onComplete: { [weak self] in
             self?.isSorting = false
-        }).start()
+        })
+        
+        bindSortStatistics(sort)
+        
+        sort.start()
+    }
+    
+    private func bindSortStatistics(_ sort: Sort) {
+        guard let baseSort = sort as? BaseSort else { return }
+        Publishers.CombineLatest(baseSort.$comparisonsCount, baseSort.$swapsCount)
+            .receive(on: DispatchQueue.main)
+            .map { SortStatistics($0, $1) }
+            .assign(to: &$sortStatistics)
     }
     
     func shuffle() {
         sortChange.array.shuffle()
+        sortStatistics.comparisons = 0
+        sortStatistics.swaps = 0
     }
     
     func changeAlgorithm(_ algorithm: SortAlgorithms) {

@@ -17,6 +17,9 @@ protocol Sort {
 }
 
 class BaseSort: Sort {
+    @Published var comparisonsCount: Int = 0
+    @Published var swapsCount: Int = 0
+    
     var timeInterval: TimeInterval = TimeInterval(0.05)
     var unsortedArray: [Int]
     let sortChangeHandler: ((SortChange) -> Void)?
@@ -29,6 +32,22 @@ class BaseSort: Sort {
     }
     
     func start() {
-        
+        // Implement in childs
+    }
+    
+    func handleSelect(_ array: [Int], currentIndex: Int) {
+        sortChangeHandler?((array, .select(currentIndex)))
+        Thread.sleep(forTimeInterval: timeInterval)
+    }
+    
+    func handleSwap(_ array: [Int], currentIndex: Int) {
+        sortChangeHandler?((array, .swap(currentIndex)))
+        swapsCount.inc()
+        Thread.sleep(forTimeInterval: timeInterval)
+    }
+    
+    func handleCompletion(resultArray: [Int]) {
+        sortChangeHandler?((array: resultArray, sortAction: nil))
+        completion?()
     }
 }

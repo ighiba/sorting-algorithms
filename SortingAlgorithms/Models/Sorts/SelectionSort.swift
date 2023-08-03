@@ -17,21 +17,23 @@ final class SelectionSort: BaseSort {
     private func startSelectionSort() {
         var newArray: [Int] = []
         for _ in unsortedArray {
-            guard let min = unsortedArray.min(),
-                  let minIndex = unsortedArray.firstIndex(of: min)
-            else {
-                break
-            }
+            let min = findMin(unsortedArray)
+            guard let minIndex = unsortedArray.firstIndex(of: min) else { break }
+            
             var currentIndex = minIndex + newArray.count
-            sortChangeHandler?((newArray + unsortedArray, .select(currentIndex)))
-            Thread.sleep(forTimeInterval: timeInterval)
+            handleSelect(newArray + unsortedArray, currentIndex: currentIndex)
             
             newArray.append(unsortedArray.remove(at: minIndex))
             currentIndex = newArray.count - 1
-            sortChangeHandler?((newArray + unsortedArray, .swap(currentIndex)))
-            Thread.sleep(forTimeInterval: timeInterval)
+            handleSwap(newArray + unsortedArray, currentIndex: currentIndex)
         }
-        sortChangeHandler?((array: newArray, sortAction: nil))
-        completion?()
+        handleCompletion(resultArray: newArray)
+    }
+    
+    private func findMin(_ array: [Int]) -> Int {
+        return array.min(by: { lhs, rhs in
+            comparisonsCount.inc()
+            return lhs < rhs
+        }) ?? 0
     }
 }

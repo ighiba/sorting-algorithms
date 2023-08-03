@@ -30,6 +30,8 @@
 		C06A52AD2A7BD41F0035DB99 /* Array+Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52AC2A7BD41F0035DB99 /* Array+Int.swift */; };
 		C06A52AF2A7BDB190035DB99 /* SortFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52AE2A7BDB190035DB99 /* SortFactory.swift */; };
 		C06A52B12A7BEDA80035DB99 /* InsertionSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52B02A7BEDA80035DB99 /* InsertionSort.swift */; };
+		C06A52B32A7C01220035DB99 /* SortStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52B22A7C01220035DB99 /* SortStatisticsView.swift */; };
+		C06A52B52A7C04900035DB99 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52B42A7C04900035DB99 /* Int.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,8 @@
 		C06A52AC2A7BD41F0035DB99 /* Array+Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Int.swift"; sourceTree = "<group>"; };
 		C06A52AE2A7BDB190035DB99 /* SortFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortFactory.swift; sourceTree = "<group>"; };
 		C06A52B02A7BEDA80035DB99 /* InsertionSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertionSort.swift; sourceTree = "<group>"; };
+		C06A52B22A7C01220035DB99 /* SortStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortStatisticsView.swift; sourceTree = "<group>"; };
+		C06A52B42A7C04900035DB99 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				C06A528B2A7A83CB0035DB99 /* SortingBarsView.swift */,
+				C06A52B22A7C01220035DB99 /* SortStatisticsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -187,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				C06A52932A7A98700035DB99 /* NSColor.swift */,
+				C06A52B42A7C04900035DB99 /* Int.swift */,
 				C06A52AC2A7BD41F0035DB99 /* Array+Int.swift */,
 			);
 			path = Extensions;
@@ -319,12 +325,14 @@
 				C06A52972A7AB1760035DB99 /* SelectionSort.swift in Sources */,
 				C06A52942A7A98700035DB99 /* NSColor.swift in Sources */,
 				C06A52AB2A7BC22C0035DB99 /* DrawFieldOperation.swift in Sources */,
+				C06A52B32A7C01220035DB99 /* SortStatisticsView.swift in Sources */,
 				C06A52AD2A7BD41F0035DB99 /* Array+Int.swift in Sources */,
 				C06A52992A7AF2D50035DB99 /* SortAlgorithms.swift in Sources */,
 				C06A52882A7A80620035DB99 /* WindowSize.swift in Sources */,
 				C06A52A12A7B058E0035DB99 /* ConcreteSortFactory.swift in Sources */,
 				C06A526B2A7A71A30035DB99 /* AppDelegate.swift in Sources */,
 				C06A52822A7A73030035DB99 /* MainViewModel.swift in Sources */,
+				C06A52B52A7C04900035DB99 /* Int.swift in Sources */,
 				C06A52A32A7B26BE0035DB99 /* SortAction.swift in Sources */,
 				C06A52912A7A98450035DB99 /* BarModel.swift in Sources */,
 				C06A52A62A7B279F0035DB99 /* BarType.swift in Sources */,

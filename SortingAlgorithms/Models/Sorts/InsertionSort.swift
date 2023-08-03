@@ -16,21 +16,21 @@ final class InsertionSort: BaseSort {
     
     private func startInsertionSort() {
         for j in 1 ..< unsortedArray.count {
-            sortChangeHandler?((unsortedArray, .select(j)))
-            Thread.sleep(forTimeInterval: timeInterval)
+            handleSelect(unsortedArray, currentIndex: j)
             
             let key = unsortedArray[j]
             var i = j - 1
             
             while i >= 0 && unsortedArray[i] > key {
+                comparisonsCount.inc()
                 i -= 1
             }
             
             if i != j - 1 {
                 let item = unsortedArray.remove(at: j)
-                unsortedArray.insert(item, at: i + 1)
-                sortChangeHandler?((unsortedArray, .swap(i + 1)))
-                Thread.sleep(forTimeInterval: timeInterval)
+                let index = i + 1
+                unsortedArray.insert(item, at: index)
+                handleSwap(unsortedArray, currentIndex: index)
             }
         }
         sortChangeHandler?((array: unsortedArray, sortAction: nil))
