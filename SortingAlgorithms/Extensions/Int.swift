@@ -8,11 +8,11 @@
 import Foundation
 
 extension Int {
-    mutating func inc() {
-        self += 1
+    mutating func inc(_ int: Int = 1) {
+        self += int
     }
     
-    mutating func dec() {
-        self -= 1
+    mutating func dec(_ int: Int = 1) {
+        self -= int
     }
 }

@@ -30,6 +30,8 @@ class SortFactoryImpl: SortFactory {
             return concreteSortFactory.makeBubbleSort(sortInput: sortInput)
         case .shell:
             return concreteSortFactory.makeShellSort(sortInput: sortInput)
+        case .quick:
+            return concreteSortFactory.makeQuickSort(sortInput: sortInput)
         }
     }
 }

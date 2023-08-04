@@ -18,7 +18,8 @@ final class BubbleSort: BaseSort {
     }
     
     private func startBubbleSort() {
-        var newArray: [Int] = unsortedArray
+        var newArray = unsortedArray
+        
         for j in 0 ..< newArray.count {
             for i in 1 ..< newArray.count - j {
                 comparisonsCount.inc()
@@ -28,6 +29,7 @@ final class BubbleSort: BaseSort {
                 }
             }
         }
+        
         handleCompletion(resultArray: newArray)
     }
 }

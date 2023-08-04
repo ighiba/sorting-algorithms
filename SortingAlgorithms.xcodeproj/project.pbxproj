@@ -34,6 +34,7 @@
 		C06A52B52A7C04900035DB99 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52B42A7C04900035DB99 /* Int.swift */; };
 		C06A52B72A7C12C40035DB99 /* BubbleSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52B62A7C12C40035DB99 /* BubbleSort.swift */; };
 		C0B1A3862A7C72F700A4E2BD /* ShellSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B1A3852A7C72F700A4E2BD /* ShellSort.swift */; };
+		C0B1A3882A7D512900A4E2BD /* QuickSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B1A3872A7D512900A4E2BD /* QuickSort.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		C06A52B42A7C04900035DB99 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		C06A52B62A7C12C40035DB99 /* BubbleSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleSort.swift; sourceTree = "<group>"; };
 		C0B1A3852A7C72F700A4E2BD /* ShellSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellSort.swift; sourceTree = "<group>"; };
+		C0B1A3872A7D512900A4E2BD /* QuickSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickSort.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +213,7 @@
 				C06A52B02A7BEDA80035DB99 /* InsertionSort.swift */,
 				C06A52B62A7C12C40035DB99 /* BubbleSort.swift */,
 				C0B1A3852A7C72F700A4E2BD /* ShellSort.swift */,
+				C0B1A3872A7D512900A4E2BD /* QuickSort.swift */,
 			);
 			path = Sorts;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				C06A52992A7AF2D50035DB99 /* SortAlgorithms.swift in Sources */,
 				C06A52882A7A80620035DB99 /* WindowSize.swift in Sources */,
 				C06A52A12A7B058E0035DB99 /* ConcreteSortFactory.swift in Sources */,
+				C0B1A3882A7D512900A4E2BD /* QuickSort.swift in Sources */,
 				C06A526B2A7A71A30035DB99 /* AppDelegate.swift in Sources */,
 				C06A52822A7A73030035DB99 /* MainViewModel.swift in Sources */,
 				C06A52B52A7C04900035DB99 /* Int.swift in Sources */,

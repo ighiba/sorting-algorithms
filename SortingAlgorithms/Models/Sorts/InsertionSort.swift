@@ -15,24 +15,27 @@ final class InsertionSort: BaseSort {
     }
     
     private func startInsertionSort() {
-        for j in 1 ..< unsortedArray.count {
-            handleSelect(unsortedArray, currentIndex: j)
+        var newArray = unsortedArray
+        
+        for j in 1 ..< newArray.count {
+            handleSelect(newArray, currentIndex: j)
             
-            let key = unsortedArray[j]
+            let key = newArray[j]
             var i = j - 1
             
-            while i >= 0 && unsortedArray[i] > key {
+            while i >= 0 && newArray[i] > key {
                 comparisonsCount.inc()
                 i -= 1
             }
             
             if i != j - 1 {
-                let item = unsortedArray.remove(at: j)
+                let item = newArray.remove(at: j)
                 let index = i + 1
-                unsortedArray.insert(item, at: index)
-                handleSwap(unsortedArray, currentIndex: index)
+                newArray.insert(item, at: index)
+                handleSwap(newArray, currentIndex: index)
             }
         }
-        handleCompletion(resultArray: unsortedArray)
+        
+        handleCompletion(resultArray: newArray)
     }
 }
