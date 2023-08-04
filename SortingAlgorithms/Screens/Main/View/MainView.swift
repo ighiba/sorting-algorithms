@@ -7,15 +7,19 @@
 
 import Cocoa
 
-private let popUpButtonWidht: CGFloat = 150
+private let popUpButtonWidht: CGFloat = 120
 private let buttonsHorizontalOffset: CGFloat = 30
 
 class MainView: NSView {
     let sortingBarsView = SortingBarsView()
-    let sortStatisticsView = SortStatisticsView()
+    
+    let inputContainer = InputContainer()
+
     let sortListPopUp = SelectablePopUpButton()
     let startButton = NSButton(title: "Start", target: nil, action: nil)
     let shuffleButton = NSButton(title: "Shuffle", target: nil, action: nil)
+    
+    let sortStatisticsView = SortStatisticsView()
 
     override init(frame: CGRect) {
         super.init(frame: NSRect(origin: .zero, size: .windowSize))
@@ -31,16 +35,18 @@ class MainView: NSView {
         self.addLayoutGuide(buttonsLayoutGuide)
         
         self.addSubview(sortingBarsView)
-        self.addSubview(sortStatisticsView)
+        self.addSubview(inputContainer)
         self.addSubview(sortListPopUp)
         self.addSubview(startButton)
         self.addSubview(shuffleButton)
+        self.addSubview(sortStatisticsView)
         
         sortingBarsView.translatesAutoresizingMaskIntoConstraints = false
-        sortStatisticsView.translatesAutoresizingMaskIntoConstraints = false
+        inputContainer.translatesAutoresizingMaskIntoConstraints = false
         sortListPopUp.translatesAutoresizingMaskIntoConstraints = false
         startButton.translatesAutoresizingMaskIntoConstraints = false
         shuffleButton.translatesAutoresizingMaskIntoConstraints = false
+        sortStatisticsView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             sortingBarsView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
@@ -52,6 +58,9 @@ class MainView: NSView {
             buttonsLayoutGuide.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
             buttonsLayoutGuide.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
             buttonsLayoutGuide.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
+            
+            inputContainer.centerYAnchor.constraint(equalTo: buttonsLayoutGuide.centerYAnchor),
+            inputContainer.trailingAnchor.constraint(equalTo: sortListPopUp.leadingAnchor, constant: -buttonsHorizontalOffset),
             
             sortListPopUp.widthAnchor.constraint(equalToConstant: popUpButtonWidht),
             sortListPopUp.centerYAnchor.constraint(equalTo: buttonsLayoutGuide.centerYAnchor),

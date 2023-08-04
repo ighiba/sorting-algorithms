@@ -35,6 +35,9 @@
 		C06A52B72A7C12C40035DB99 /* BubbleSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52B62A7C12C40035DB99 /* BubbleSort.swift */; };
 		C0B1A3862A7C72F700A4E2BD /* ShellSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B1A3852A7C72F700A4E2BD /* ShellSort.swift */; };
 		C0B1A3882A7D512900A4E2BD /* QuickSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B1A3872A7D512900A4E2BD /* QuickSort.swift */; };
+		C0B1A38A2A7D727300A4E2BD /* InputContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B1A3892A7D727300A4E2BD /* InputContainer.swift */; };
+		C0B1A38C2A7D80A800A4E2BD /* TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B1A38B2A7D80A800A4E2BD /* TextFieldDelegate.swift */; };
+		C0B1A38E2A7D813700A4E2BD /* UInt16NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B1A38D2A7D813700A4E2BD /* UInt16NumberFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +71,9 @@
 		C06A52B62A7C12C40035DB99 /* BubbleSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleSort.swift; sourceTree = "<group>"; };
 		C0B1A3852A7C72F700A4E2BD /* ShellSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellSort.swift; sourceTree = "<group>"; };
 		C0B1A3872A7D512900A4E2BD /* QuickSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickSort.swift; sourceTree = "<group>"; };
+		C0B1A3892A7D727300A4E2BD /* InputContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputContainer.swift; sourceTree = "<group>"; };
+		C0B1A38B2A7D80A800A4E2BD /* TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldDelegate.swift; sourceTree = "<group>"; };
+		C0B1A38D2A7D813700A4E2BD /* UInt16NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UInt16NumberFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				C06A528B2A7A83CB0035DB99 /* SortingBarsView.swift */,
+				C0B1A3892A7D727300A4E2BD /* InputContainer.swift */,
 				C06A52B22A7C01220035DB99 /* SortStatisticsView.swift */,
 			);
 			path = Views;
@@ -231,6 +238,8 @@
 			children = (
 				C06A52AE2A7BDB190035DB99 /* SortFactory.swift */,
 				C06A52A02A7B058E0035DB99 /* ConcreteSortFactory.swift */,
+				C0B1A38B2A7D80A800A4E2BD /* TextFieldDelegate.swift */,
+				C0B1A38D2A7D813700A4E2BD /* UInt16NumberFormatter.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -325,6 +334,7 @@
 			files = (
 				C0B1A3862A7C72F700A4E2BD /* ShellSort.swift in Sources */,
 				C06A52AF2A7BDB190035DB99 /* SortFactory.swift in Sources */,
+				C0B1A38A2A7D727300A4E2BD /* InputContainer.swift in Sources */,
 				C06A52802A7A73030035DB99 /* MainController.swift in Sources */,
 				C06A528C2A7A83CB0035DB99 /* SortingBarsView.swift in Sources */,
 				C06A52B12A7BEDA80035DB99 /* InsertionSort.swift in Sources */,
@@ -332,6 +342,7 @@
 				C06A527F2A7A73030035DB99 /* MainModuleAssembly.swift in Sources */,
 				C06A52812A7A73030035DB99 /* MainView.swift in Sources */,
 				C06A529B2A7AFF180035DB99 /* BaseSort.swift in Sources */,
+				C0B1A38C2A7D80A800A4E2BD /* TextFieldDelegate.swift in Sources */,
 				C06A52972A7AB1760035DB99 /* SelectionSort.swift in Sources */,
 				C06A52942A7A98700035DB99 /* NSColor.swift in Sources */,
 				C06A52AB2A7BC22C0035DB99 /* DrawFieldOperation.swift in Sources */,
@@ -345,6 +356,7 @@
 				C06A52822A7A73030035DB99 /* MainViewModel.swift in Sources */,
 				C06A52B52A7C04900035DB99 /* Int.swift in Sources */,
 				C06A52A32A7B26BE0035DB99 /* SortAction.swift in Sources */,
+				C0B1A38E2A7D813700A4E2BD /* UInt16NumberFormatter.swift in Sources */,
 				C06A52912A7A98450035DB99 /* BarModel.swift in Sources */,
 				C06A52A62A7B279F0035DB99 /* BarType.swift in Sources */,
 				C06A52A92A7BC21B0035DB99 /* CalculateBarModelsOperation.swift in Sources */,

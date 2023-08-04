@@ -9,6 +9,8 @@ import Cocoa
 import Combine
 
 class MainViewController: NSViewController {
+    
+    // MARK: - Properties
 
     var viewModel: MainViewModel!
 
@@ -23,6 +25,7 @@ class MainViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureInputs()
         configurePopUpButton()
         configureActions()
         configureBindings()
@@ -32,11 +35,18 @@ class MainViewController: NSViewController {
     
     // MARK: - Methods
     
+    func configureInputs() {
+        mainView.inputContainer.arraySizeTextField.stringValue = "\(viewModel.arraySize)"
+        mainView.inputContainer.delayTextField.stringValue = "\(viewModel.delay)"
+    }
+    
     func configurePopUpButton() {
         mainView.sortListPopUp.configure(selectedItem: viewModel.currentSortAlgorithm)
     }
     
     func configureActions() {
+        mainView.inputContainer.arraySizeTextFieldDelegate = TextFieldDelegate { self.handleArraySizeChange($0) }
+        mainView.inputContainer.delayTextFieldDelegate = TextFieldDelegate { self.handleDelayChange($0) }
         mainView.sortListPopUp.action = #selector(sortSelected)
         mainView.startButton.action = #selector(startButtonTapped)
         mainView.shuffleButton.action = #selector(shuffleButtonTapped)
@@ -52,7 +62,7 @@ class MainViewController: NSViewController {
         
         viewModel.$sortStatistics
             .receive(on: DispatchQueue.main)
-            //.throttle(for: 0.1, scheduler: DispatchQueue.main, latest: true)
+            //.throttle(for: 0.05, scheduler: DispatchQueue.main, latest: true)
             .sink { [weak self] statistics in
                 self?.mainView.sortStatisticsView.update(withStatistics: statistics)
             }
@@ -62,6 +72,8 @@ class MainViewController: NSViewController {
             .receive(on: DispatchQueue.main)
             .map { !$0 }
             .sink { [weak self] isEnabled in
+                self?.mainView.inputContainer.arraySizeTextField.isEnabled = isEnabled
+                self?.mainView.inputContainer.delayTextField.isEnabled = isEnabled
                 self?.mainView.sortListPopUp.isEnabled = isEnabled
                 self?.mainView.startButton.isEnabled = isEnabled
                 self?.mainView.shuffleButton.isEnabled = isEnabled
@@ -73,6 +85,22 @@ class MainViewController: NSViewController {
 // MARK: - Actions
 
 extension MainViewController {
+    func handleArraySizeChange(_ sender: NSTextField) {
+        let text = sender.stringValue
+        let minSize: UInt16 = 10
+        var result = text.isEmpty ? minSize : UInt16(text) ?? minSize
+        result = result >= minSize ? result : minSize
+        viewModel.arraySize = result
+    }
+    
+    func handleDelayChange(_ sender: NSTextField) {
+        let text = sender.stringValue
+        let minSize: UInt16 = 5
+        var result = text.isEmpty ? minSize : UInt16(text) ?? minSize
+        result = result >= minSize ? result : minSize
+        viewModel.delay = result
+    }
+    
     @objc func sortSelected(_ sender: NSPopUpButton) {
         guard let title = sender.selectedItem?.title,
               let sort = SortAlgorithms(rawValue: title)
@@ -80,7 +108,6 @@ extension MainViewController {
             return
         }
         viewModel.changeAlgorithm(sort)
-        print("\(sort.rawValue)")
     }
     
     @objc func startButtonTapped(_ sender: NSButton) {

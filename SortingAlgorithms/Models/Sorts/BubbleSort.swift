@@ -8,10 +8,10 @@
 import Foundation
 
 final class BubbleSort: BaseSort {
-    
-    override var timeInterval: TimeInterval { return TimeInterval(0.02) }
-    
+        
     override func start() {
+        // DEBUG
+        //setDelay(ms: 20)
         DispatchQueue.global().async {
             self.startBubbleSort()
         }

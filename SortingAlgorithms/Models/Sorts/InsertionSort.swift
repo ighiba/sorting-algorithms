@@ -8,6 +8,7 @@
 import Foundation
 
 final class InsertionSort: BaseSort {
+    
     override func start() {
         DispatchQueue.global().async {
             self.startInsertionSort()

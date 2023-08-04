@@ -10,10 +10,10 @@ import Foundation
 final class QuickSort: BaseSort {
     
     typealias RestArray = (left: [Int], right: [Int])
-    
-    override var timeInterval: TimeInterval { return 0.02 }
-    
+        
     override func start() {
+        // DEBUG
+//        setDelay(ms: 20)
         DispatchQueue.global().async {
             self.startQuickSort()
         }

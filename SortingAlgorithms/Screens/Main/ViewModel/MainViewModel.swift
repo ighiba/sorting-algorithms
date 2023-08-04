@@ -27,6 +27,9 @@ class MainViewModel: MainViewModelDelegate {
     @Published var sortStatistics: SortStatistics
     @Published var isSorting: Bool = false
     
+    var arraySize: UInt16 = 512
+    var delay: UInt16 = 10
+    
     var currentSortAlgorithm: SortAlgorithms = .quick
     
     var sortFactory: SortFactory!
@@ -34,21 +37,31 @@ class MainViewModel: MainViewModelDelegate {
     // MARK: - Init
         
     init() {
-        let array = ((1...50).map { $0 }).shuffled()
-        self.sortChange = (array, nil)
-        self.sortStatistics = (0, 0)
+        sortChange = ([], nil)
+        sortStatistics = (0, 0)
+        refreshArray(arraySize)
     }
     
     // MARK: - Methods
     
+    private func refreshArray(_ arraySize: UInt16) {
+        sortChange.array = createNewArray(upToSize: arraySize)
+    }
+    
+    private func createNewArray(upToSize elementsCount: UInt16) -> [Int] {
+       return (1...elementsCount).map({ Int($0) }).shuffled()
+    }
+    
     func viewDidLoad() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.start()
+            //self.start()
         }
     }
     
     func start() {
+        if sortChange.array.count != arraySize { refreshArray(arraySize) }
         guard sortChange.array.isNotSorted() else { return }
+        
         isSorting = true
         let sort = sortFactory.makeSort(algorithm: currentSortAlgorithm, array: sortChange.array, onChange: { [weak self] sortChange in
             self?.sortChange = sortChange
@@ -58,6 +71,7 @@ class MainViewModel: MainViewModelDelegate {
         
         bindSortStatistics(sort)
         
+        sort.setDelay(ms: delay)
         sort.start()
     }
     
@@ -70,7 +84,7 @@ class MainViewModel: MainViewModelDelegate {
     }
     
     func shuffle() {
-        sortChange.array.shuffle()
+        refreshArray(arraySize)
         sortStatistics.comparisons = 0
         sortStatistics.swaps = 0
     }

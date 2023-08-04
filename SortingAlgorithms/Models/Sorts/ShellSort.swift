@@ -8,10 +8,10 @@
 import Foundation
 
 final class ShellSort: BaseSort {
-    
-    override var timeInterval: TimeInterval { return TimeInterval(0.05) }
-    
+        
     override func start() {
+        // DEBUG
+//        setDelay(ms: 50)
         DispatchQueue.global().async {
             self.startShellSort()
         }
