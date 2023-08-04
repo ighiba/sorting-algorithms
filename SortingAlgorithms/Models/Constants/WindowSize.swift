@@ -8,5 +8,5 @@
 import Foundation
 
 extension NSSize {
-    static let windowSize = NSSize(width: 600, height: 400)
+    static let windowSize = NSSize(width: 700, height: 400)
 }
