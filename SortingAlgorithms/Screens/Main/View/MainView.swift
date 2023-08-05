@@ -50,7 +50,7 @@ class MainView: NSView {
         
         NSLayoutConstraint.activate([
             sortingBarsView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-            sortingBarsView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.8),
+            sortingBarsView.heightAnchor.constraint(equalToConstant: NSSize.sortingViewSize.height),
             sortingBarsView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
             sortingBarsView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
             

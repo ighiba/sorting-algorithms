@@ -59,7 +59,10 @@ class SortingBarsView: NSView, SortingView {
     // MARK: - Update
     
     func update(withChange change: SortChange) {
-        let calculateBarModelsOperation = CalculateBarModelsOperation(frameSize: self.frame.size, change: change)
+        let calculateBarModelsOperation = CalculateBarModelsOperation(
+            frameSize: .sortingViewSize,
+            change: change
+        )
         
         let drawFieldOperation = DrawFieldOperation { [weak self] barModels in
             self?.barField = self?.drawField(barModels)
