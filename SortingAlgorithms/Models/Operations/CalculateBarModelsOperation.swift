@@ -13,23 +13,24 @@ final class CalculateBarModelsOperation: Operation {
     let frameWidth: CGFloat
     let frameHeight: CGFloat
     let change: SortChange
+    let maxValue: UInt16
     
-    init(frameSize: CGSize, change: SortChange) {
+    init(frameSize: CGSize, change: SortChange, maxValue: UInt16) {
         self.frameWidth = frameSize.width
         self.frameHeight = frameSize.height
         self.change = change
+        self.maxValue = maxValue
     }
     
     override func main() {
         guard !change.array.isEmpty else { return }
         let barWidth = frameWidth / CGFloat(change.array.count)
         let maxBarHeight = frameHeight
-        let maxElementValue = change.array.max() ?? 0
         
-        self.barModels = change.array.enumerated().map { enumerated in
+        barModels = change.array.enumerated().map { enumerated in
             let (element, index) = (enumerated.element, enumerated.offset)
             let xOffset = CGFloat(index) * barWidth
-            let value = CGFloat(element) / CGFloat(maxElementValue)
+            let value = CGFloat(element) / CGFloat(maxValue)
             let barHeight = maxBarHeight * value
             let barRect = NSRect(
                 x: xOffset,

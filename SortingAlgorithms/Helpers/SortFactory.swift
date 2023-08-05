@@ -32,6 +32,8 @@ class SortFactoryImpl: SortFactory {
             return concreteSortFactory.makeShellSort(sortInput: sortInput)
         case .quick:
             return concreteSortFactory.makeQuickSort(sortInput: sortInput)
+        case .merge:
+            return concreteSortFactory.makeMergeSort(sortInput: sortInput)
         }
     }
 }

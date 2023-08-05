@@ -8,7 +8,7 @@
 import Cocoa
 
 protocol SortingView: NSView {
-    func update(withChange change: (SortChange))
+    func update(withChange change: (SortChange), maxValue: UInt16)
 }
 
 class SortingBarsView: NSView, SortingView {
@@ -58,10 +58,11 @@ class SortingBarsView: NSView, SortingView {
     
     // MARK: - Update
     
-    func update(withChange change: SortChange) {
+    func update(withChange change: SortChange, maxValue: UInt16) {
         let calculateBarModelsOperation = CalculateBarModelsOperation(
             frameSize: .sortingViewSize,
-            change: change
+            change: change,
+            maxValue: maxValue
         )
         
         let drawFieldOperation = DrawFieldOperation { [weak self] barModels in

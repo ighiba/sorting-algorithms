@@ -13,6 +13,7 @@ protocol ConcreteSortFactory: AnyObject {
     func makeBubbleSort(sortInput: SortInput) -> BubbleSort
     func makeShellSort(sortInput: SortInput) -> ShellSort
     func makeQuickSort(sortInput: SortInput) -> QuickSort
+    func makeMergeSort(sortInput: SortInput) -> MergeSort
 }
 
 class SortAlgorithmsFactoryImpl: ConcreteSortFactory {
@@ -33,6 +34,10 @@ class SortAlgorithmsFactoryImpl: ConcreteSortFactory {
     }
     
     func makeQuickSort(sortInput: SortInput) -> QuickSort {
+        return makeSort(sortInput: sortInput)
+    }
+    
+    func makeMergeSort(sortInput: SortInput) -> MergeSort {
         return makeSort(sortInput: sortInput)
     }
     

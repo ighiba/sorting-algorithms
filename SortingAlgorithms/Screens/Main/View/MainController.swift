@@ -56,7 +56,8 @@ class MainViewController: NSViewController {
         viewModel.$sortChange
             .receive(on: DispatchQueue.main)
             .sink { [weak self] changes in
-                self?.mainView.sortingBarsView.update(withChange: changes)
+                let maxValue = self?.viewModel.arraySize ?? UInt16((changes.array.max() ?? 0))
+                self?.mainView.sortingBarsView.update(withChange: changes, maxValue: maxValue)
             }
             .store(in: &cancellables)
         

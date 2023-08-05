@@ -28,9 +28,9 @@ class MainViewModel: MainViewModelDelegate {
     @Published var isSorting: Bool = false
     
     var arraySize: UInt16 = 512
-    var delay: UInt16 = 10
+    var delay: UInt16 = 5
     
-    var currentSortAlgorithm: SortAlgorithms = .quick
+    var currentSortAlgorithm: SortAlgorithms = .merge
     
     var sortFactory: SortFactory!
  
@@ -54,7 +54,7 @@ class MainViewModel: MainViewModelDelegate {
     
     func viewDidLoad() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            //self.start()
+            self.start()
         }
     }
     

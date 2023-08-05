@@ -15,4 +15,5 @@ enum SortAlgorithms: String, TitledCaseIterable {
     case bubble = "Bubble sort"
     case shell = "Shell sort"
     case quick = "Quick sort"
+    case merge = "Merge sort"
 }

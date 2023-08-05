@@ -38,6 +38,8 @@
 		C0B1A38A2A7D727300A4E2BD /* InputContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B1A3892A7D727300A4E2BD /* InputContainer.swift */; };
 		C0B1A38C2A7D80A800A4E2BD /* TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B1A38B2A7D80A800A4E2BD /* TextFieldDelegate.swift */; };
 		C0B1A38E2A7D813700A4E2BD /* UInt16NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B1A38D2A7D813700A4E2BD /* UInt16NumberFormatter.swift */; };
+		C0B1A3902A7DA28300A4E2BD /* MergeSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B1A38F2A7DA28300A4E2BD /* MergeSort.swift */; };
+		C0B1A3922A7DD39F00A4E2BD /* SortingViewSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B1A3912A7DD39F00A4E2BD /* SortingViewSize.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +76,8 @@
 		C0B1A3892A7D727300A4E2BD /* InputContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputContainer.swift; sourceTree = "<group>"; };
 		C0B1A38B2A7D80A800A4E2BD /* TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldDelegate.swift; sourceTree = "<group>"; };
 		C0B1A38D2A7D813700A4E2BD /* UInt16NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UInt16NumberFormatter.swift; sourceTree = "<group>"; };
+		C0B1A38F2A7DA28300A4E2BD /* MergeSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeSort.swift; sourceTree = "<group>"; };
+		C0B1A3912A7DD39F00A4E2BD /* SortingViewSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingViewSize.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				C06A52872A7A80620035DB99 /* WindowSize.swift */,
+				C0B1A3912A7DD39F00A4E2BD /* SortingViewSize.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -221,6 +226,7 @@
 				C06A52B62A7C12C40035DB99 /* BubbleSort.swift */,
 				C0B1A3852A7C72F700A4E2BD /* ShellSort.swift */,
 				C0B1A3872A7D512900A4E2BD /* QuickSort.swift */,
+				C0B1A38F2A7DA28300A4E2BD /* MergeSort.swift */,
 			);
 			path = Sorts;
 			sourceTree = "<group>";
@@ -332,6 +338,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0B1A3922A7DD39F00A4E2BD /* SortingViewSize.swift in Sources */,
 				C0B1A3862A7C72F700A4E2BD /* ShellSort.swift in Sources */,
 				C06A52AF2A7BDB190035DB99 /* SortFactory.swift in Sources */,
 				C0B1A38A2A7D727300A4E2BD /* InputContainer.swift in Sources */,
@@ -356,6 +363,7 @@
 				C06A52822A7A73030035DB99 /* MainViewModel.swift in Sources */,
 				C06A52B52A7C04900035DB99 /* Int.swift in Sources */,
 				C06A52A32A7B26BE0035DB99 /* SortAction.swift in Sources */,
+				C0B1A3902A7DA28300A4E2BD /* MergeSort.swift in Sources */,
 				C0B1A38E2A7D813700A4E2BD /* UInt16NumberFormatter.swift in Sources */,
 				C06A52912A7A98450035DB99 /* BarModel.swift in Sources */,
 				C06A52A62A7B279F0035DB99 /* BarType.swift in Sources */,
