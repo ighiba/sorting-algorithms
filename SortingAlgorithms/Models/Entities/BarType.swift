@@ -16,7 +16,7 @@ enum BarType {
 extension BarType {
     static func obtain(forAction sortAction: SortAction?, currentIndex: Int) -> BarType {
         let type: BarType
-        if case .select(let index) = sortAction, index == currentIndex {
+        if case .select(let indices) = sortAction, indices.contains(currentIndex) {
             type = .selected
         } else if case .swap(let index, let swoppedIndex) = sortAction, index == currentIndex || swoppedIndex == currentIndex {
             type = .swopped

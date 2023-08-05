@@ -39,8 +39,13 @@ class BaseSort: Sort {
         self.delay = Double(delay) / 1000
     }
     
-    func handleSelect(_ array: [Int], currentIndex: Int) {
-        sortChangeHandler?((array, .select(currentIndex)))
+    func handleSelect(_ array: [Int], index: Int) {
+        sortChangeHandler?((array, .select([index])))
+        Thread.sleep(forTimeInterval: delay)
+    }
+    
+    func handleSelect(_ array: [Int], indices: [Int]) {
+        sortChangeHandler?((array, .select(indices)))
         Thread.sleep(forTimeInterval: delay)
     }
     

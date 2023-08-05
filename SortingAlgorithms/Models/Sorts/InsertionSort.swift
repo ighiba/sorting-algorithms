@@ -19,7 +19,7 @@ final class InsertionSort: BaseSort {
         var newArray = unsortedArray
         
         for j in 1 ..< newArray.count {
-            handleSelect(newArray, currentIndex: j)
+            handleSelect(newArray, index: j)
             
             let key = newArray[j]
             var i = j - 1

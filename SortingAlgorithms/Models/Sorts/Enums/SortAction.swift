@@ -8,6 +8,6 @@
 import Foundation
 
 enum SortAction {
-    case select(Int)
+    case select([Int])
     case swap(Int, Int?)
 }

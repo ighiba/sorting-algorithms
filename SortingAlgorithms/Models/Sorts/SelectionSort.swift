@@ -21,7 +21,7 @@ final class SelectionSort: BaseSort {
             guard let minIndex = unsortedArray.firstIndex(of: min) else { break }
             
             var currentIndex = minIndex + newArray.count
-            handleSelect(newArray + unsortedArray, currentIndex: currentIndex)
+            handleSelect(newArray + unsortedArray, index: currentIndex)
             
             newArray.append(unsortedArray.remove(at: minIndex))
             currentIndex = newArray.count - 1
