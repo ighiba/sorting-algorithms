@@ -10,8 +10,6 @@ import Foundation
 final class ShellSort: BaseSort {
         
     override func start() {
-        // DEBUG
-//        setDelay(ms: 50)
         DispatchQueue.global().async {
             self.startShellSort()
         }

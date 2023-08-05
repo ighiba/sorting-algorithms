@@ -12,8 +12,6 @@ final class QuickSort: BaseSort {
     typealias RestArray = (left: [Int], right: [Int])
         
     override func start() {
-        // DEBUG
-//        setDelay(ms: 20)
         DispatchQueue.global().async {
             self.startQuickSort()
         }

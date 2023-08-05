@@ -53,9 +53,9 @@ class MainViewModel: MainViewModelDelegate {
     }
     
     func viewDidLoad() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.start()
-        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//            self.start()
+//        }
     }
     
     func start() {
