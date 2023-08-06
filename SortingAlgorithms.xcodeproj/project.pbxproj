@@ -33,6 +33,9 @@
 		C06A52B32A7C01220035DB99 /* SortStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52B22A7C01220035DB99 /* SortStatisticsView.swift */; };
 		C06A52B52A7C04900035DB99 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52B42A7C04900035DB99 /* Int.swift */; };
 		C06A52B72A7C12C40035DB99 /* BubbleSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52B62A7C12C40035DB99 /* BubbleSort.swift */; };
+		C07AA4272A8012B2009D6362 /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07AA4262A8012B2009D6362 /* Vertex.swift */; };
+		C07AA4292A8012CB009D6362 /* VertexFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07AA4282A8012CB009D6362 /* VertexFactory.swift */; };
+		C07AA42E2A8013FC009D6362 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = C07AA42D2A8013FC009D6362 /* Shaders.metal */; };
 		C0B1A3862A7C72F700A4E2BD /* ShellSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B1A3852A7C72F700A4E2BD /* ShellSort.swift */; };
 		C0B1A3882A7D512900A4E2BD /* QuickSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B1A3872A7D512900A4E2BD /* QuickSort.swift */; };
 		C0B1A38A2A7D727300A4E2BD /* InputContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B1A3892A7D727300A4E2BD /* InputContainer.swift */; };
@@ -71,6 +74,10 @@
 		C06A52B22A7C01220035DB99 /* SortStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortStatisticsView.swift; sourceTree = "<group>"; };
 		C06A52B42A7C04900035DB99 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		C06A52B62A7C12C40035DB99 /* BubbleSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleSort.swift; sourceTree = "<group>"; };
+		C07AA4262A8012B2009D6362 /* Vertex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
+		C07AA4282A8012CB009D6362 /* VertexFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VertexFactory.swift; sourceTree = "<group>"; };
+		C07AA42A2A801350009D6362 /* ColoredVertex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColoredVertex.h; sourceTree = "<group>"; };
+		C07AA42D2A8013FC009D6362 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		C0B1A3852A7C72F700A4E2BD /* ShellSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellSort.swift; sourceTree = "<group>"; };
 		C0B1A3872A7D512900A4E2BD /* QuickSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickSort.swift; sourceTree = "<group>"; };
 		C0B1A3892A7D727300A4E2BD /* InputContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputContainer.swift; sourceTree = "<group>"; };
@@ -111,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				C06A526A2A7A71A30035DB99 /* AppDelegate.swift */,
+				C07AA4242A801275009D6362 /* Renderer */,
 				C06A529F2A7B057E0035DB99 /* Helpers */,
 				C06A52852A7A80370035DB99 /* Models */,
 				C06A52792A7A72D60035DB99 /* Screens */,
@@ -268,6 +276,17 @@
 			path = Operations;
 			sourceTree = "<group>";
 		};
+		C07AA4242A801275009D6362 /* Renderer */ = {
+			isa = PBXGroup;
+			children = (
+				C07AA4262A8012B2009D6362 /* Vertex.swift */,
+				C07AA4282A8012CB009D6362 /* VertexFactory.swift */,
+				C07AA42A2A801350009D6362 /* ColoredVertex.h */,
+				C07AA42D2A8013FC009D6362 /* Shaders.metal */,
+			);
+			path = Renderer;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -342,7 +361,9 @@
 				C0B1A3862A7C72F700A4E2BD /* ShellSort.swift in Sources */,
 				C06A52AF2A7BDB190035DB99 /* SortFactory.swift in Sources */,
 				C0B1A38A2A7D727300A4E2BD /* InputContainer.swift in Sources */,
+				C07AA42E2A8013FC009D6362 /* Shaders.metal in Sources */,
 				C06A52802A7A73030035DB99 /* MainController.swift in Sources */,
+				C07AA4272A8012B2009D6362 /* Vertex.swift in Sources */,
 				C06A528C2A7A83CB0035DB99 /* SortingBarsView.swift in Sources */,
 				C06A52B12A7BEDA80035DB99 /* InsertionSort.swift in Sources */,
 				C06A529E2A7B01460035DB99 /* SelectablePopUpButton.swift in Sources */,
@@ -369,6 +390,7 @@
 				C06A52A62A7B279F0035DB99 /* BarType.swift in Sources */,
 				C06A52A92A7BC21B0035DB99 /* CalculateBarModelsOperation.swift in Sources */,
 				C06A52B72A7C12C40035DB99 /* BubbleSort.swift in Sources */,
+				C07AA4292A8012CB009D6362 /* VertexFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

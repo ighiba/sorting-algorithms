@@ -51,13 +51,16 @@ class MainViewController: NSViewController {
         mainView.startButton.action = #selector(startButtonTapped)
         mainView.shuffleButton.action = #selector(shuffleButtonTapped)
     }
-    
+
     func configureBindings() {
         viewModel.$sortChange
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] changes in
+            .throttle(for: 0.01, scheduler: DispatchQueue.global(), latest: true)
+            .map { [weak self] changes in
                 let maxValue = self?.viewModel.arraySize ?? UInt16((changes.array.max() ?? 0))
-                self?.mainView.sortingBarsView.update(withChange: changes, maxValue: maxValue)
+                return (changes, maxValue)
+            }
+            .sink { [weak self] in
+                self?.mainView.sortingBarsView.update(withChange: $0, maxValue: $1)
             }
             .store(in: &cancellables)
         

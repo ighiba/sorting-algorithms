@@ -11,7 +11,7 @@ private let popUpButtonWidht: CGFloat = 120
 private let buttonsHorizontalOffset: CGFloat = 30
 
 class MainView: NSView {
-    let sortingBarsView = SortingBarsView()
+    let sortingBarsView = SortingBarsView(frame: NSRect(origin: .zero, size: .sortingViewSize))
     
     let inputContainer = InputContainer()
 
