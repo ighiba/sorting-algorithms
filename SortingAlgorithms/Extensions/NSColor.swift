@@ -9,11 +9,22 @@ import Cocoa
 
 extension NSColor {
     func multiply(by value: CGFloat) -> NSColor {
-        guard let color = self.usingColorSpace(.deviceRGB) else { return self }
-        let red = color.redComponent
-        let green = color.greenComponent
-        let blue = color.blueComponent
-        let alpha = color.alphaComponent
-        return NSColor(red: red * value, green: green * value, blue: blue * value, alpha: alpha)
+        let (r, g, b, a) = components()
+        return NSColor(red: r * value, green: g * value, blue: b * value, alpha: a)
+    }
+    
+    func floatComponents() -> (Float, Float, Float, Float) {
+        let (r, g, b, a) = components()
+        return (Float(r), Float(g), Float(b), Float(a))
+    }
+    
+    func components() -> (CGFloat, CGFloat, CGFloat, CGFloat) {
+        guard let color = self.usingColorSpace(.deviceRGB) else { return (1, 1, 1, 1) }
+        return (
+            color.redComponent,
+            color.greenComponent,
+            color.blueComponent,
+            color.alphaComponent
+        )
     }
 }
