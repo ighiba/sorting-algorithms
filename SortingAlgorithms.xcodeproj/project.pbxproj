@@ -48,6 +48,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C061F1712A81989E0008FE61 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		C06A52672A7A71A30035DB99 /* SortingAlgorithms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SortingAlgorithms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C06A526A2A7A71A30035DB99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C06A526E2A7A71A40035DB99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -107,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				C07AA4372A815354009D6362 /* README.md */,
+				C061F1712A81989E0008FE61 /* LICENSE */,
 				C06A52692A7A71A30035DB99 /* SortingAlgorithms */,
 				C06A52682A7A71A30035DB99 /* Products */,
 			);
