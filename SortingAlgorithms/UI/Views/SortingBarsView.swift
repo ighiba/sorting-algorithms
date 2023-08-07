@@ -26,12 +26,7 @@ class SortingBarsView: NSView, SortingView {
     
     private var metalView: MTKView!
 
-    private var device: MTLDevice!
-    private var commandQueue: MTLCommandQueue!
-    private var pipelineState: MTLRenderPipelineState!
-    private var vertexBuffer: MTLBuffer!
-    private var vertexCount: Int = 0
-    private let vertexFactory: VertexFactory = VertexFactoryImpl()
+    private var renderer: Renderer = RendererImpl()
 
     private let baseBarColor: NSColor = .white.multiply(by: 0.9)
     
@@ -42,15 +37,12 @@ class SortingBarsView: NSView, SortingView {
         metalView = MTKView(frame: bounds)
         addSubview(metalView)
 
-        device = MTLCreateSystemDefaultDevice()
-        metalView.device = device
-
-        commandQueue = device.makeCommandQueue()
+        metalView.device = renderer.device
 
         metalView.clearColor = MTLClearColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        metalView.delegate = self
+        metalView.delegate = renderer
 
-        setupMetal()
+        renderer.setupMetal()
     }
     
     required init?(coder: NSCoder) {
@@ -63,44 +55,6 @@ class SortingBarsView: NSView, SortingView {
         NSColor.white.setFill()
         dirtyRect.fill()
         super.draw(dirtyRect)
-    }
-    
-    // MARK: - Metal
-    
-    func setupMetal() {
-        let library = device.makeDefaultLibrary()
-       
-        let pipelineDescriptor = MTLRenderPipelineDescriptor()
-        pipelineDescriptor.vertexFunction = library!.makeFunction(name: "vertexShader")
-        pipelineDescriptor.fragmentFunction = library!.makeFunction(name: "fragmentShader")
-        pipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
-
-        let vertexDescriptor = MTLVertexDescriptor()
-        vertexDescriptor.attributes[0].format = .float4
-        vertexDescriptor.attributes[0].offset = 0
-        vertexDescriptor.attributes[0].bufferIndex = 0
-
-        vertexDescriptor.layouts[0].stride = MemoryLayout<Vertex>.stride
-        vertexDescriptor.layouts[0].stepFunction = .perVertex
-
-        pipelineDescriptor.vertexDescriptor = vertexDescriptor
-
-        pipelineState = try! device.makeRenderPipelineState(descriptor: pipelineDescriptor)
-        let initialVertices = vertexFactory.makeQuadrangle(
-            SIMD4<Float>( 1, -1, 0, 1),
-            SIMD4<Float>(-1, -1, 0, 1),
-            SIMD4<Float>(-1,  1, 0, 1),
-            SIMD4<Float>( 1,  1, 0, 1),
-            color: SIMD4<Float>(1, 1, 1, 1)
-        )
-        
-        vertexCount = initialVertices.count
-        
-        vertexBuffer = makeVertexBuffer(for: initialVertices)
-    }
-    
-    private func makeVertexBuffer(for vertices: [Vertex]) -> MTLBuffer? {
-        device.makeBuffer(bytes: vertices, length: MemoryLayout<Vertex>.stride * vertices.count, options: [])
     }
 
     // MARK: - Update
@@ -118,7 +72,7 @@ class SortingBarsView: NSView, SortingView {
                 let barHeight = Float(barModel.value * 2 - 1)
                 let xPosition = Float(index) * barWidth - 1
                 let vertexColor = vertexColor(forType: barModel.type, value: barModel.value)
-                return vertexFactory.makeQuadrangle(
+                return renderer.vertexFactory.makeQuadrangle(
                     SIMD4<Float>(barWidth + xPosition,        -1, 0, 1),
                     SIMD4<Float>(           xPosition,        -1, 0, 1),
                     SIMD4<Float>(           xPosition, barHeight, 0, 1),
@@ -127,13 +81,11 @@ class SortingBarsView: NSView, SortingView {
                 )
             }.reduce([]) { $0 + $1 }
             
-            vertexCount = vertices.count
-            
-            vertexBuffer = makeVertexBuffer(for: vertices)
+            renderer.updateVertexBuffer(withVertices: vertices)
         }
     }
     
-    // MARK: - Bars drawing
+    // MARK: - Bars colors
 
     private func vertexColor(forType type: BarType, value: CGFloat) -> SIMD4<Float> {
         let nsColor = barColor(forType: type, value: value)
@@ -152,32 +104,5 @@ class SortingBarsView: NSView, SortingView {
     
     private func calculateColor(for value: CGFloat) -> NSColor {
         return baseBarColor.multiply(by: value)
-    }
-}
-
-// MARK: - MTKViewDelegate
-
-extension SortingBarsView: MTKViewDelegate {
-    func draw(in view: MTKView) {
-        guard let drawable = view.currentDrawable,
-              let pipelineState = pipelineState,
-              let descriptor = view.currentRenderPassDescriptor else {
-            return
-        }
-
-        let commandBuffer = commandQueue.makeCommandBuffer()
-        let renderEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: descriptor)
-
-        renderEncoder?.setRenderPipelineState(pipelineState)
-        renderEncoder?.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
-        renderEncoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: vertexCount)
-
-        renderEncoder?.endEncoding()
-        commandBuffer?.present(drawable)
-        commandBuffer?.commit()
-    }
-
-    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
-
     }
 }
