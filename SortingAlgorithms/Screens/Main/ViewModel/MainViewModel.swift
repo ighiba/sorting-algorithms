@@ -10,16 +10,7 @@ import Combine
 
 typealias SortStatistics = (comparisons: Int, swaps: Int)
 
-protocol MainViewModelDelegate: AnyObject {
-    var sortChange: SortChange { get }
-    var isSorting: Bool { get }
-    func viewDidLoad()
-    func start()
-    func shuffle()
-    func changeAlgorithm(_ algorithm: SortAlgorithms)
-}
-
-class MainViewModel: MainViewModelDelegate {
+class MainViewModel {
     
     // MARK: - Properties
     
@@ -30,7 +21,7 @@ class MainViewModel: MainViewModelDelegate {
     var arraySize: UInt16 = 512
     var delay: UInt16 = 5
     
-    var currentSortAlgorithm: SortAlgorithms = .merge
+    var currentSortAlgorithm: SortAlgorithms = .quick
     
     var sortFactory: SortFactory!
  
@@ -50,12 +41,6 @@ class MainViewModel: MainViewModelDelegate {
     
     private func createNewArray(upToSize elementsCount: UInt16) -> [Int] {
        return (1...elementsCount).map({ Int($0) }).shuffled()
-    }
-    
-    func viewDidLoad() {
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//            self.start()
-//        }
     }
     
     func start() {

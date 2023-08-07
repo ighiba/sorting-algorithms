@@ -24,13 +24,10 @@ class MainViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureInputs()
         configurePopUpButton()
         configureActions()
         configureBindings()
-            
-        viewModel.viewDidLoad()
     }
     
     // MARK: - Methods
@@ -66,7 +63,7 @@ class MainViewController: NSViewController {
         
         viewModel.$sortStatistics
             .receive(on: DispatchQueue.main)
-            //.throttle(for: 0.05, scheduler: DispatchQueue.main, latest: true)
+            .throttle(for: 0.05, scheduler: DispatchQueue.main, latest: true)
             .sink { [weak self] statistics in
                 self?.mainView.sortStatisticsView.update(withStatistics: statistics)
             }

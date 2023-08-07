@@ -15,15 +15,7 @@ protocol SortingView: NSView {
 class SortingBarsView: NSView, SortingView {
     
     // MARK: - Properties
-    
-//    private let mainQueue = OperationQueue.main
-//    private let calculationQueue: OperationQueue = {
-//        let queue = OperationQueue()
-//        queue.maxConcurrentOperationCount = 1
-//        queue.qualityOfService = .userInitiated
-//        return queue
-//    }()
-    
+
     private var metalView: MTKView!
 
     private var renderer: Renderer = RendererImpl()
@@ -50,14 +42,6 @@ class SortingBarsView: NSView, SortingView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    // MARK: - Layout
-    
-    override func draw(_ dirtyRect: NSRect) {
-        NSColor.white.setFill()
-        dirtyRect.fill()
-        super.draw(dirtyRect)
-    }
 
     // MARK: - Update
 
@@ -68,23 +52,21 @@ class SortingBarsView: NSView, SortingView {
             return BarModel(type: type, value: value, rect: .zero)
         }
         
-        autoreleasepool {
-            let barWidth = Float(2) / Float(barModels.count)
-            let vertices: [Quadrangle] = barModels.enumerated().map { (index, barModel) in
-                let barHeight = Float(barModel.value * 2 - 1)
-                let xPosition = Float(index) * barWidth - 1
-                let vertexColor = vertexBarColor(forType: barModel.type, value: barModel.value)
-                return Quadrangle(
-                    SIMD2<Float>(barWidth + xPosition,        -1),
-                    SIMD2<Float>(           xPosition,        -1),
-                    SIMD2<Float>(           xPosition, barHeight),
-                    SIMD2<Float>(barWidth + xPosition, barHeight),
-                    color: vertexColor
-                )
-            }
-            
-            renderer.renderQuadrangles(vertices)
+        let barWidth = Float(2) / Float(barModels.count)
+        let vertices: [Quadrangle] = barModels.enumerated().map { (index, barModel) in
+            let barHeight = Float(barModel.value * 2 - 1)
+            let xPosition = Float(index) * barWidth - 1
+            let vertexColor = vertexBarColor(forType: barModel.type, value: barModel.value)
+            return Quadrangle(
+                SIMD2<Float>(barWidth + xPosition,        -1),
+                SIMD2<Float>(           xPosition,        -1),
+                SIMD2<Float>(           xPosition, barHeight),
+                SIMD2<Float>(barWidth + xPosition, barHeight),
+                color: vertexColor
+            )
         }
+        
+        renderer.renderQuadrangles(vertices)
     }
     
     // MARK: - Bars colors
