@@ -30,23 +30,12 @@ class RendererImpl: NSObject, Renderer {
     
     func setupMetal() {
         let library = device.makeDefaultLibrary()
-       
-        let pipelineDescriptor = MTLRenderPipelineDescriptor()
-        pipelineDescriptor.vertexFunction = library!.makeFunction(name: "vertexShader")
-        pipelineDescriptor.fragmentFunction = library!.makeFunction(name: "fragmentShader")
-        pipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
-
-        let vertexDescriptor = MTLVertexDescriptor()
-        vertexDescriptor.attributes[0].format = .float4
-        vertexDescriptor.attributes[0].offset = 0
-        vertexDescriptor.attributes[0].bufferIndex = 0
-
-        vertexDescriptor.layouts[0].stride = MemoryLayout<Vertex>.stride
-        vertexDescriptor.layouts[0].stepFunction = .perVertex
-
-        pipelineDescriptor.vertexDescriptor = vertexDescriptor
+        
+        let pipelineDescriptor = configurePipelineDescriptor(library: library)
+        pipelineDescriptor.vertexDescriptor = configureVertexDecriptor()
 
         pipelineState = try! device.makeRenderPipelineState(descriptor: pipelineDescriptor)
+        
         let initialVertices = vertexFactory.makeQuadrangle(
             SIMD4<Float>( 1, -1, 0, 1),
             SIMD4<Float>(-1, -1, 0, 1),
@@ -56,6 +45,29 @@ class RendererImpl: NSObject, Renderer {
         )
         
         updateVertexBuffer(withVertices: initialVertices)
+    }
+    
+    private func configurePipelineDescriptor(library: MTLLibrary?) -> MTLRenderPipelineDescriptor {
+        let pipelineDescriptor = MTLRenderPipelineDescriptor()
+        
+        pipelineDescriptor.vertexFunction = library?.makeFunction(name: "vertexShader")
+        pipelineDescriptor.fragmentFunction = library?.makeFunction(name: "fragmentShader")
+        pipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
+        
+        return pipelineDescriptor
+    }
+    
+    private func configureVertexDecriptor() -> MTLVertexDescriptor {
+        let vertexDescriptor = MTLVertexDescriptor()
+        
+        vertexDescriptor.attributes[0].format = .float4
+        vertexDescriptor.attributes[0].offset = 0
+        vertexDescriptor.attributes[0].bufferIndex = 0
+
+        vertexDescriptor.layouts[0].stride = MemoryLayout<Vertex>.stride
+        vertexDescriptor.layouts[0].stepFunction = .perVertex
+        
+        return vertexDescriptor
     }
     
     func updateVertexBuffer(withVertices vertices: [Vertex]) {
@@ -72,7 +84,8 @@ extension RendererImpl: MTKViewDelegate {
     func draw(in view: MTKView) {
         guard let drawable = view.currentDrawable,
               let pipelineState = pipelineState,
-              let descriptor = view.currentRenderPassDescriptor else {
+              let descriptor = view.currentRenderPassDescriptor
+        else {
             return
         }
 
