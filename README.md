@@ -19,8 +19,7 @@ SortingAlgorithms is a macOS application that provides a visual demonstration of
 
 ## Preview
 
-![sorting_algorithms](https://github.com/ighiba/sorting-algorithms/assets/9763289/02c1bbf8-353d-4888-b008-d74196daa44b)
-
+![sorting_algorithms](https://github.com/ighiba/sorting-algorithms/assets/9763289/6e7ba8cb-6bdb-473c-ab1a-d87d6a0b8be1)
 
 ## Installation
 
