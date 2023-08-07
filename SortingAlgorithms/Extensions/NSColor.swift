@@ -28,3 +28,10 @@ extension NSColor {
         )
     }
 }
+
+extension NSColor {
+    func toVertexColor() -> SIMD4<Float> {
+        let (r, g, b, a) = self.floatComponents()
+        return SIMD4(r, g, b ,a)
+    }
+}

@@ -28,12 +28,14 @@ class SortingBarsView: NSView, SortingView {
 
     private var renderer: Renderer = RendererImpl()
 
-    private let baseBarColor: NSColor = .white.multiply(by: 0.9)
+    private let vertexBaseColor: SIMD4<Float> = NSColor.white.multiply(by: 0.9).toVertexColor()
+    private let vertexRedColor: SIMD4<Float> = NSColor.red.toVertexColor()
     
     // MARK: - Init
-    
+
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
+        
         metalView = MTKView(frame: bounds)
         addSubview(metalView)
 
@@ -71,7 +73,7 @@ class SortingBarsView: NSView, SortingView {
             let vertices: [Quadrangle] = barModels.enumerated().map { (index, barModel) in
                 let barHeight = Float(barModel.value * 2 - 1)
                 let xPosition = Float(index) * barWidth - 1
-                let vertexColor = vertexColor(forType: barModel.type, value: barModel.value)
+                let vertexColor = vertexBarColor(forType: barModel.type, value: barModel.value)
                 return Quadrangle(
                     SIMD4<Float>(barWidth + xPosition,        -1, 0, 1),
                     SIMD4<Float>(           xPosition,        -1, 0, 1),
@@ -86,23 +88,20 @@ class SortingBarsView: NSView, SortingView {
     }
     
     // MARK: - Bars colors
-
-    private func vertexColor(forType type: BarType, value: CGFloat) -> SIMD4<Float> {
-        let nsColor = barColor(forType: type, value: value)
-        let (r, g, b, a) = nsColor.floatComponents()
-        return SIMD4<Float>(r, g, b, a)
-    }
     
-    private func barColor(forType type: BarType, value: CGFloat) -> NSColor {
+    private func vertexBarColor(forType type: BarType, value: CGFloat) -> SIMD4<Float> {
         switch type {
         case .standart:
-            return calculateColor(for: value)
+            return calculateVertexColor(for: value)
         case .selected, .swopped:
-            return NSColor.red
+            return vertexRedColor
         }
     }
     
-    private func calculateColor(for value: CGFloat) -> NSColor {
-        return baseBarColor.multiply(by: value)
+    private func calculateVertexColor(for value: CGFloat) -> SIMD4<Float> {
+        let r = vertexBaseColor.x * Float(value)
+        let g = vertexBaseColor.y * Float(value)
+        let b = vertexBaseColor.z * Float(value)
+        return SIMD4(r, g, b, vertexBaseColor.w)
     }
 }
