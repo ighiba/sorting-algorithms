@@ -7,7 +7,6 @@
 
 import Cocoa
 
-@main
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     var window: NSWindow?
@@ -62,7 +61,7 @@ extension AppDelegate {
 extension AppDelegate: NSWindowDelegate {
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
         if !flag {
-            self.showMainWindow()
+            showMainWindow()
         }
         return true
     }
