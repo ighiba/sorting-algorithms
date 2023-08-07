@@ -12,7 +12,7 @@ protocol Renderer: NSObjectProtocol, MTKViewDelegate {
     var device: MTLDevice! { get }
     var vertexFactory: VertexFactory { get }
     func setupMetal()
-    func updateVertexBuffer(withVertices vertices: [Vertex])
+    func renderQuadrangles(_ quadrangles: [Quadrangle])
 }
 
 class RendererImpl: NSObject, Renderer {
@@ -36,7 +36,7 @@ class RendererImpl: NSObject, Renderer {
 
         pipelineState = try! device.makeRenderPipelineState(descriptor: pipelineDescriptor)
         
-        let initialVertices = vertexFactory.makeQuadrangle(
+        let initialQuadrangle = Quadrangle(
             SIMD4<Float>( 1, -1, 0, 1),
             SIMD4<Float>(-1, -1, 0, 1),
             SIMD4<Float>(-1,  1, 0, 1),
@@ -44,7 +44,7 @@ class RendererImpl: NSObject, Renderer {
             color: SIMD4<Float>(1, 1, 1, 1)
         )
         
-        updateVertexBuffer(withVertices: initialVertices)
+        renderQuadrangles([initialQuadrangle])
     }
     
     private func configurePipelineDescriptor(library: MTLLibrary?) -> MTLRenderPipelineDescriptor {
@@ -70,13 +70,18 @@ class RendererImpl: NSObject, Renderer {
         return vertexDescriptor
     }
     
-    func updateVertexBuffer(withVertices vertices: [Vertex]) {
+    func renderQuadrangles(_ quadrangles: [Quadrangle]) {
+        let vertices: [Vertex] = quadrangles.map({ vertexFactory.makeQuadrangle($0) }).reduce([], +)
+        updateVertexBuffer(withVertices: vertices)
+    }
+    
+    private func updateVertexBuffer(withVertices vertices: [Vertex]) {
         vertexCount = vertices.count
         vertexBuffer = makeVertexBuffer(for: vertices)
     }
     
     private func makeVertexBuffer(for vertices: [Vertex]) -> MTLBuffer? {
-        device.makeBuffer(bytes: vertices, length: MemoryLayout<Vertex>.stride * vertices.count, options: [])
+        return device.makeBuffer(bytes: vertices, length: MemoryLayout<Vertex>.stride * vertices.count, options: [])
     }
 }
 

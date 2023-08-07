@@ -68,20 +68,20 @@ class SortingBarsView: NSView, SortingView {
         
         autoreleasepool {
             let barWidth = Float(2) / Float(barModels.count)
-            let vertices: [Vertex] = barModels.enumerated().map { (index, barModel) in
+            let vertices: [Quadrangle] = barModels.enumerated().map { (index, barModel) in
                 let barHeight = Float(barModel.value * 2 - 1)
                 let xPosition = Float(index) * barWidth - 1
                 let vertexColor = vertexColor(forType: barModel.type, value: barModel.value)
-                return renderer.vertexFactory.makeQuadrangle(
+                return Quadrangle(
                     SIMD4<Float>(barWidth + xPosition,        -1, 0, 1),
                     SIMD4<Float>(           xPosition,        -1, 0, 1),
                     SIMD4<Float>(           xPosition, barHeight, 0, 1),
                     SIMD4<Float>(barWidth + xPosition, barHeight, 0, 1),
                     color: vertexColor
                 )
-            }.reduce([]) { $0 + $1 }
+            }
             
-            renderer.updateVertexBuffer(withVertices: vertices)
+            renderer.renderQuadrangles(vertices)
         }
     }
     

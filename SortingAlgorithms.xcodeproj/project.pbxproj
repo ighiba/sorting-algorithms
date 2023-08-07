@@ -37,6 +37,7 @@
 		C07AA4292A8012CB009D6362 /* VertexFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07AA4282A8012CB009D6362 /* VertexFactory.swift */; };
 		C07AA42E2A8013FC009D6362 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = C07AA42D2A8013FC009D6362 /* Shaders.metal */; };
 		C07AA4322A812252009D6362 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07AA4312A812252009D6362 /* Renderer.swift */; };
+		C07AA4342A813A91009D6362 /* Quadrangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07AA4332A813A91009D6362 /* Quadrangle.swift */; };
 		C0B1A3862A7C72F700A4E2BD /* ShellSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B1A3852A7C72F700A4E2BD /* ShellSort.swift */; };
 		C0B1A3882A7D512900A4E2BD /* QuickSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B1A3872A7D512900A4E2BD /* QuickSort.swift */; };
 		C0B1A38A2A7D727300A4E2BD /* InputContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B1A3892A7D727300A4E2BD /* InputContainer.swift */; };
@@ -80,6 +81,7 @@
 		C07AA42A2A801350009D6362 /* ColoredVertex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColoredVertex.h; sourceTree = "<group>"; };
 		C07AA42D2A8013FC009D6362 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		C07AA4312A812252009D6362 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		C07AA4332A813A91009D6362 /* Quadrangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quadrangle.swift; sourceTree = "<group>"; };
 		C0B1A3852A7C72F700A4E2BD /* ShellSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellSort.swift; sourceTree = "<group>"; };
 		C0B1A3872A7D512900A4E2BD /* QuickSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickSort.swift; sourceTree = "<group>"; };
 		C0B1A3892A7D727300A4E2BD /* InputContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputContainer.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				C07AA4312A812252009D6362 /* Renderer.swift */,
+				C07AA4332A813A91009D6362 /* Quadrangle.swift */,
 				C07AA4262A8012B2009D6362 /* Vertex.swift */,
 				C07AA4282A8012CB009D6362 /* VertexFactory.swift */,
 				C07AA42A2A801350009D6362 /* ColoredVertex.h */,
@@ -367,6 +370,7 @@
 				C07AA42E2A8013FC009D6362 /* Shaders.metal in Sources */,
 				C06A52802A7A73030035DB99 /* MainController.swift in Sources */,
 				C07AA4272A8012B2009D6362 /* Vertex.swift in Sources */,
+				C07AA4342A813A91009D6362 /* Quadrangle.swift in Sources */,
 				C06A528C2A7A83CB0035DB99 /* SortingBarsView.swift in Sources */,
 				C06A52B12A7BEDA80035DB99 /* InsertionSort.swift in Sources */,
 				C06A529E2A7B01460035DB99 /* SelectablePopUpButton.swift in Sources */,
