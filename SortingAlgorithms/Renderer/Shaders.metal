@@ -20,7 +20,7 @@ vertex VertexData vertexShader(uint vertexID [[vertex_id]],
                              constant ColoredVertex *vertices [[buffer(0)]])
 {
     VertexData vertex_data;
-    vertex_data.position = vertices[vertexID].position;
+    vertex_data.position = float4(vertices[vertexID].position.x, vertices[vertexID].position.y, 0, 1);
     vertex_data.color = vertices[vertexID].color;
     return vertex_data;
 }

@@ -75,10 +75,10 @@ class SortingBarsView: NSView, SortingView {
                 let xPosition = Float(index) * barWidth - 1
                 let vertexColor = vertexBarColor(forType: barModel.type, value: barModel.value)
                 return Quadrangle(
-                    SIMD4<Float>(barWidth + xPosition,        -1, 0, 1),
-                    SIMD4<Float>(           xPosition,        -1, 0, 1),
-                    SIMD4<Float>(           xPosition, barHeight, 0, 1),
-                    SIMD4<Float>(barWidth + xPosition, barHeight, 0, 1),
+                    SIMD2<Float>(barWidth + xPosition,        -1),
+                    SIMD2<Float>(           xPosition,        -1),
+                    SIMD2<Float>(           xPosition, barHeight),
+                    SIMD2<Float>(barWidth + xPosition, barHeight),
                     color: vertexColor
                 )
             }

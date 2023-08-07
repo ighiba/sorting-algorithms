@@ -7,4 +7,4 @@
 
 import Foundation
 
-typealias Quadrangle = (p1: SIMD4<Float>, p2: SIMD4<Float>, p3: SIMD4<Float>, p4: SIMD4<Float>, color: SIMD4<Float>)
+typealias Quadrangle = (p1: SIMD2<Float>, p2: SIMD2<Float>, p3: SIMD2<Float>, p4: SIMD2<Float>, color: SIMD4<Float>)

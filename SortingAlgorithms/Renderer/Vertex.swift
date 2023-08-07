@@ -8,6 +8,6 @@
 import Foundation
 
 struct Vertex {
-    var position: SIMD4<Float>
+    var position: SIMD2<Float>
     var color: SIMD4<Float>
 }

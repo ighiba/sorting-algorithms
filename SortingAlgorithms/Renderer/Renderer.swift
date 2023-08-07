@@ -37,10 +37,10 @@ class RendererImpl: NSObject, Renderer {
         pipelineState = try! device.makeRenderPipelineState(descriptor: pipelineDescriptor)
         
         let initialQuadrangle = Quadrangle(
-            SIMD4<Float>( 1, -1, 0, 1),
-            SIMD4<Float>(-1, -1, 0, 1),
-            SIMD4<Float>(-1,  1, 0, 1),
-            SIMD4<Float>( 1,  1, 0, 1),
+            SIMD2<Float>( 1, -1),
+            SIMD2<Float>(-1, -1),
+            SIMD2<Float>(-1,  1),
+            SIMD2<Float>( 1,  1),
             color: SIMD4<Float>(1, 1, 1, 1)
         )
         
@@ -60,7 +60,7 @@ class RendererImpl: NSObject, Renderer {
     private func configureVertexDecriptor() -> MTLVertexDescriptor {
         let vertexDescriptor = MTLVertexDescriptor()
         
-        vertexDescriptor.attributes[0].format = .float4
+        vertexDescriptor.attributes[0].format = .float2
         vertexDescriptor.attributes[0].offset = 0
         vertexDescriptor.attributes[0].bufferIndex = 0
 
