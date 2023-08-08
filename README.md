@@ -7,7 +7,7 @@ SortingAlgorithms is a macOS application that provides a visual demonstration of
 - Selection
 - Insertion
 - Bubble
-- Shel
+- Shell
 - Quick
 - Merge
 
