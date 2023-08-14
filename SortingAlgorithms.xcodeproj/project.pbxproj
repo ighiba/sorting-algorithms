@@ -24,8 +24,6 @@
 		C06A52A12A7B058E0035DB99 /* ConcreteSortFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52A02A7B058E0035DB99 /* ConcreteSortFactory.swift */; };
 		C06A52A32A7B26BE0035DB99 /* SortAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52A22A7B26BE0035DB99 /* SortAction.swift */; };
 		C06A52A62A7B279F0035DB99 /* BarType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52A52A7B279F0035DB99 /* BarType.swift */; };
-		C06A52A92A7BC21B0035DB99 /* CalculateBarModelsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52A82A7BC21B0035DB99 /* CalculateBarModelsOperation.swift */; };
-		C06A52AB2A7BC22C0035DB99 /* DrawFieldOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52AA2A7BC22C0035DB99 /* DrawFieldOperation.swift */; };
 		C06A52AD2A7BD41F0035DB99 /* Array+Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52AC2A7BD41F0035DB99 /* Array+Int.swift */; };
 		C06A52AF2A7BDB190035DB99 /* SortFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52AE2A7BDB190035DB99 /* SortFactory.swift */; };
 		C06A52B12A7BEDA80035DB99 /* InsertionSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A52B02A7BEDA80035DB99 /* InsertionSort.swift */; };
@@ -68,8 +66,6 @@
 		C06A52A02A7B058E0035DB99 /* ConcreteSortFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcreteSortFactory.swift; sourceTree = "<group>"; };
 		C06A52A22A7B26BE0035DB99 /* SortAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortAction.swift; sourceTree = "<group>"; };
 		C06A52A52A7B279F0035DB99 /* BarType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarType.swift; sourceTree = "<group>"; };
-		C06A52A82A7BC21B0035DB99 /* CalculateBarModelsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateBarModelsOperation.swift; sourceTree = "<group>"; };
-		C06A52AA2A7BC22C0035DB99 /* DrawFieldOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawFieldOperation.swift; sourceTree = "<group>"; };
 		C06A52AC2A7BD41F0035DB99 /* Array+Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Int.swift"; sourceTree = "<group>"; };
 		C06A52AE2A7BDB190035DB99 /* SortFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortFactory.swift; sourceTree = "<group>"; };
 		C06A52B02A7BEDA80035DB99 /* InsertionSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertionSort.swift; sourceTree = "<group>"; };
@@ -177,7 +173,6 @@
 		C06A52852A7A80370035DB99 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C06A52A72A7BC20D0035DB99 /* Operations */,
 				C06A52952A7AB15C0035DB99 /* Sorts */,
 				C06A528F2A7A98390035DB99 /* Entities */,
 				C06A52862A7A80410035DB99 /* Constants */,
@@ -273,15 +268,6 @@
 				C06A52982A7AF2D50035DB99 /* SortAlgorithms.swift */,
 			);
 			path = Enums;
-			sourceTree = "<group>";
-		};
-		C06A52A72A7BC20D0035DB99 /* Operations */ = {
-			isa = PBXGroup;
-			children = (
-				C06A52A82A7BC21B0035DB99 /* CalculateBarModelsOperation.swift */,
-				C06A52AA2A7BC22C0035DB99 /* DrawFieldOperation.swift */,
-			);
-			path = Operations;
 			sourceTree = "<group>";
 		};
 		C07AA4242A801275009D6362 /* Renderer */ = {
@@ -384,7 +370,6 @@
 				C0B1A38C2A7D80A800A4E2BD /* TextFieldDelegate.swift in Sources */,
 				C06A52972A7AB1760035DB99 /* SelectionSort.swift in Sources */,
 				C06A52942A7A98700035DB99 /* NSColor.swift in Sources */,
-				C06A52AB2A7BC22C0035DB99 /* DrawFieldOperation.swift in Sources */,
 				C06A52B32A7C01220035DB99 /* SortStatisticsView.swift in Sources */,
 				C06A52AD2A7BD41F0035DB99 /* Array+Int.swift in Sources */,
 				C06A52992A7AF2D50035DB99 /* SortAlgorithms.swift in Sources */,
@@ -400,7 +385,6 @@
 				C0B1A38E2A7D813700A4E2BD /* UInt16NumberFormatter.swift in Sources */,
 				C06A52912A7A98450035DB99 /* BarModel.swift in Sources */,
 				C06A52A62A7B279F0035DB99 /* BarType.swift in Sources */,
-				C06A52A92A7BC21B0035DB99 /* CalculateBarModelsOperation.swift in Sources */,
 				C06A52B72A7C12C40035DB99 /* BubbleSort.swift in Sources */,
 				C07AA4292A8012CB009D6362 /* VertexFactory.swift in Sources */,
 			);

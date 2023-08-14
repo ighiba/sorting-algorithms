@@ -8,6 +8,7 @@
 import Cocoa
 
 class TextFieldDelegate: NSObject, NSTextFieldDelegate {
+    
     let textFieldTextDidChangeHandler: ((NSTextField) -> Void)?
     
     init(textChangeHandler: ((NSTextField) -> Void)?) {

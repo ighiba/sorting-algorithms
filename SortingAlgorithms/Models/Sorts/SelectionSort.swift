@@ -8,6 +8,7 @@
 import Foundation
 
 final class SelectionSort: BaseSort {
+
     override func start() {
         DispatchQueue.global().async {
             self.startSelectionSort()

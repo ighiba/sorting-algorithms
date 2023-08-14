@@ -8,6 +8,7 @@
 import Cocoa
 
 class SortStatisticsView: NSView {
+    
     var comparisonsTextView = NSTextField(labelWithString: "Comparisons: 0")
     var swapsTextView = NSTextField(labelWithString: "Swaps: 0")
     

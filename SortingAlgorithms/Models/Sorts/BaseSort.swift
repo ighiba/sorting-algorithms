@@ -17,6 +17,7 @@ protocol Sort {
 }
 
 class BaseSort: Sort {
+    
     @Published var comparisonsCount: Int = 0
     @Published var swapsCount: Int = 0
     

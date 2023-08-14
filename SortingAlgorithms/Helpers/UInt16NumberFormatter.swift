@@ -8,6 +8,7 @@
 import Foundation
 
 class UInt16NumberFormatter: NumberFormatter {
+    
     let minValue: UInt16
     let maxValue: UInt16
     

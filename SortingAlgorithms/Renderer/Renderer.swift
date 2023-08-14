@@ -10,18 +10,18 @@ import MetalKit
 
 protocol Renderer: NSObjectProtocol, MTKViewDelegate {
     var device: MTLDevice! { get }
-    var vertexFactory: VertexFactory { get }
     func setupMetal()
     func renderQuadrangles(_ quadrangles: [Quadrangle])
 }
 
 class RendererImpl: NSObject, Renderer {
+    
     var device: MTLDevice!
     private var commandQueue: MTLCommandQueue!
     private var pipelineState: MTLRenderPipelineState!
     private var vertexBuffer: MTLBuffer!
     private var vertexCount: Int = 0
-    var vertexFactory: VertexFactory = VertexFactoryImpl()
+    private let vertexFactory: VertexFactory = VertexFactoryImpl()
     
     override init() {
         device = MTLCreateSystemDefaultDevice()
@@ -32,7 +32,6 @@ class RendererImpl: NSObject, Renderer {
         let library = device.makeDefaultLibrary()
         
         let pipelineDescriptor = configurePipelineDescriptor(library: library)
-        pipelineDescriptor.vertexDescriptor = configureVertexDecriptor()
 
         pipelineState = try! device.makeRenderPipelineState(descriptor: pipelineDescriptor)
         
@@ -53,6 +52,8 @@ class RendererImpl: NSObject, Renderer {
         pipelineDescriptor.vertexFunction = library?.makeFunction(name: "vertexShader")
         pipelineDescriptor.fragmentFunction = library?.makeFunction(name: "fragmentShader")
         pipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
+        
+        pipelineDescriptor.vertexDescriptor = configureVertexDecriptor()
         
         return pipelineDescriptor
     }
