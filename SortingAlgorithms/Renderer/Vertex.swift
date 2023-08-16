@@ -9,5 +9,5 @@ import Foundation
 
 struct Vertex {
     var position: PositionXY
-    var color: SIMD4<Float>
+    var color: RGBA
 }

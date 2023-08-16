@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C04CBA3A2A8D42E4003E6686 /* PositionXY.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04CBA392A8D42E4003E6686 /* PositionXY.swift */; };
+		C04CBA3C2A8D448E003E6686 /* NSColor+RGBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04CBA3B2A8D448E003E6686 /* NSColor+RGBA.swift */; };
 		C06A526B2A7A71A30035DB99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A526A2A7A71A30035DB99 /* AppDelegate.swift */; };
 		C06A526F2A7A71A40035DB99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C06A526E2A7A71A40035DB99 /* Assets.xcassets */; };
 		C06A527F2A7A73030035DB99 /* MainModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A527B2A7A73030035DB99 /* MainModuleAssembly.swift */; };
@@ -47,7 +47,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C04CBA392A8D42E4003E6686 /* PositionXY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionXY.swift; sourceTree = "<group>"; };
+		C04CBA3B2A8D448E003E6686 /* NSColor+RGBA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+RGBA.swift"; sourceTree = "<group>"; };
 		C061F1712A81989E0008FE61 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		C06A52672A7A71A30035DB99 /* SortingAlgorithms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SortingAlgorithms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C06A526A2A7A71A30035DB99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -102,15 +102,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C04CBA382A8D42CD003E6686 /* Misc */ = {
-			isa = PBXGroup;
-			children = (
-				C04CBA392A8D42E4003E6686 /* PositionXY.swift */,
-				C07AA4332A813A91009D6362 /* Quadrangle.swift */,
-			);
-			path = Misc;
-			sourceTree = "<group>";
-		};
 		C06A525E2A7A71A30035DB99 = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				C06A52932A7A98700035DB99 /* NSColor.swift */,
+				C04CBA3B2A8D448E003E6686 /* NSColor+RGBA.swift */,
 				C06A52B42A7C04900035DB99 /* Int.swift */,
 				C06A52AC2A7BD41F0035DB99 /* Array+Int.swift */,
 			);
@@ -284,8 +276,8 @@
 		C07AA4242A801275009D6362 /* Renderer */ = {
 			isa = PBXGroup;
 			children = (
-				C04CBA382A8D42CD003E6686 /* Misc */,
 				C07AA4312A812252009D6362 /* Renderer.swift */,
+				C07AA4332A813A91009D6362 /* Quadrangle.swift */,
 				C07AA4262A8012B2009D6362 /* Vertex.swift */,
 				C07AA4282A8012CB009D6362 /* VertexFactory.swift */,
 				C07AA42A2A801350009D6362 /* ColoredVertex.h */,
@@ -380,7 +372,6 @@
 				C06A529B2A7AFF180035DB99 /* BaseSort.swift in Sources */,
 				C0B1A38C2A7D80A800A4E2BD /* TextFieldDelegate.swift in Sources */,
 				C06A52972A7AB1760035DB99 /* SelectionSort.swift in Sources */,
-				C04CBA3A2A8D42E4003E6686 /* PositionXY.swift in Sources */,
 				C06A52942A7A98700035DB99 /* NSColor.swift in Sources */,
 				C06A52B32A7C01220035DB99 /* SortStatisticsView.swift in Sources */,
 				C06A52AD2A7BD41F0035DB99 /* Array+Int.swift in Sources */,
@@ -389,6 +380,7 @@
 				C06A52A12A7B058E0035DB99 /* ConcreteSortFactory.swift in Sources */,
 				C0B1A3882A7D512900A4E2BD /* QuickSort.swift in Sources */,
 				C07AA4322A812252009D6362 /* Renderer.swift in Sources */,
+				C04CBA3C2A8D448E003E6686 /* NSColor+RGBA.swift in Sources */,
 				C06A526B2A7A71A30035DB99 /* AppDelegate.swift in Sources */,
 				C06A52822A7A73030035DB99 /* MainViewModel.swift in Sources */,
 				C06A52B52A7C04900035DB99 /* Int.swift in Sources */,

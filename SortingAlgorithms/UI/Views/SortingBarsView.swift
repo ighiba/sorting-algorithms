@@ -20,8 +20,8 @@ class SortingBarsView: NSView, SortingView {
 
     private var renderer: Renderer = RendererImpl()
 
-    private let vertexBaseColor: SIMD4<Float> = NSColor.white.multiply(by: 0.9).toVertexColor()
-    private let vertexRedColor: SIMD4<Float> = NSColor.red.toVertexColor()
+    private let rgbaColorBase: RGBA = NSColor.white.multiply(by: 0.9).toRGBA()
+    private let rgbaColorRed: RGBA = NSColor.red.toRGBA()
     
     // MARK: - Init
 
@@ -56,13 +56,13 @@ class SortingBarsView: NSView, SortingView {
         let vertices: [Quadrangle] = barModels.enumerated().map { (index, barModel) in
             let barHeight = Float(barModel.value * 2 - 1)
             let xPosition = Float(index) * barWidth - 1
-            let vertexColor = vertexBarColor(forType: barModel.type, value: barModel.value)
+            let rgbaColor = barRgbaColor(forType: barModel.type, value: barModel.value)
             return Quadrangle(
                 PositionXY(barWidth + xPosition,        -1),
                 PositionXY(           xPosition,        -1),
                 PositionXY(           xPosition, barHeight),
                 PositionXY(barWidth + xPosition, barHeight),
-                color: vertexColor
+                color: rgbaColor
             )
         }
         
@@ -71,19 +71,19 @@ class SortingBarsView: NSView, SortingView {
     
     // MARK: - Bars colors
     
-    private func vertexBarColor(forType type: BarType, value: CGFloat) -> SIMD4<Float> {
+    private func barRgbaColor(forType type: BarType, value: CGFloat) -> RGBA {
         switch type {
         case .standart:
-            return calculateVertexColor(for: value)
+            return calculateRgbaColor(for: value)
         case .selected, .swopped:
-            return vertexRedColor
+            return rgbaColorRed
         }
     }
     
-    private func calculateVertexColor(for value: CGFloat) -> SIMD4<Float> {
-        let r = vertexBaseColor.x * Float(value)
-        let g = vertexBaseColor.y * Float(value)
-        let b = vertexBaseColor.z * Float(value)
-        return SIMD4(r, g, b, vertexBaseColor.w)
+    private func calculateRgbaColor(for value: CGFloat) -> RGBA {
+        let r = rgbaColorBase.x * Float(value)
+        let g = rgbaColorBase.y * Float(value)
+        let b = rgbaColorBase.z * Float(value)
+        return RGBA(r, g, b, rgbaColorBase.w)
     }
 }

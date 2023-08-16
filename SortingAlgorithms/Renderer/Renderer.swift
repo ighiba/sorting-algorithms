@@ -40,7 +40,7 @@ class RendererImpl: NSObject, Renderer {
             PositionXY(-1, -1),
             PositionXY(-1,  1),
             PositionXY( 1,  1),
-            color: SIMD4<Float>(1, 1, 1, 1)
+            color: RGBA(1, 1, 1, 1)
         )
         
         renderQuadrangles([initialQuadrangle])
