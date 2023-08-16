@@ -36,10 +36,10 @@ class RendererImpl: NSObject, Renderer {
         pipelineState = try! device.makeRenderPipelineState(descriptor: pipelineDescriptor)
         
         let initialQuadrangle = Quadrangle(
-            SIMD2<Float>( 1, -1),
-            SIMD2<Float>(-1, -1),
-            SIMD2<Float>(-1,  1),
-            SIMD2<Float>( 1,  1),
+            PositionXY( 1, -1),
+            PositionXY(-1, -1),
+            PositionXY(-1,  1),
+            PositionXY( 1,  1),
             color: SIMD4<Float>(1, 1, 1, 1)
         )
         
