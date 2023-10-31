@@ -22,22 +22,22 @@ class SortStatisticsView: NSView {
     }
     
     func setupViews() {
-        self.addSubview(comparisonsTextView)
-        self.addSubview(swapsTextView)
+        addSubview(comparisonsTextView)
+        addSubview(swapsTextView)
         
         comparisonsTextView.translatesAutoresizingMaskIntoConstraints = false
         swapsTextView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            comparisonsTextView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            comparisonsTextView.topAnchor.constraint(equalTo: self.topAnchor),
-            comparisonsTextView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.5),
-            comparisonsTextView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            comparisonsTextView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            comparisonsTextView.topAnchor.constraint(equalTo: topAnchor),
+            comparisonsTextView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5),
+            comparisonsTextView.trailingAnchor.constraint(equalTo: trailingAnchor),
             
-            swapsTextView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            swapsTextView.leadingAnchor.constraint(equalTo: leadingAnchor),
             swapsTextView.topAnchor.constraint(equalTo: comparisonsTextView.bottomAnchor),
-            swapsTextView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.5),
-            swapsTextView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+            swapsTextView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5),
+            swapsTextView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
     

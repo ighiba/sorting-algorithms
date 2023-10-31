@@ -46,22 +46,20 @@ class InputContainer: NSView {
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
-        setViews()
+        setupViews()
+        setupStyle()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func setViews() {
-        arraySizeTextField.focusRingType = .none
-        delayTextField.focusRingType = .none
-        
+
+    private func setupViews() {
         let arraySizeStack = NSStackView(views: [arraySizeLabel, arraySizeTextField])
         let delayStack = NSStackView(views: [delayLabel, delayTextField])
 
-        self.addSubview(arraySizeStack)
-        self.addSubview(delayStack)
+        addSubview(arraySizeStack)
+        addSubview(delayStack)
         
         arraySizeLabel.translatesAutoresizingMaskIntoConstraints = false
         delayLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -76,15 +74,20 @@ class InputContainer: NSView {
             delayTextField.widthAnchor.constraint(equalToConstant: textFieldWidth),
             arraySizeTextField.widthAnchor.constraint(equalToConstant: textFieldWidth),
             
-            arraySizeStack.topAnchor.constraint(equalTo: self.topAnchor),
-            arraySizeStack.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.0),
-            arraySizeStack.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.5, constant: -verticalOffset / 2),
-            arraySizeStack.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            arraySizeStack.topAnchor.constraint(equalTo: topAnchor),
+            arraySizeStack.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1.0),
+            arraySizeStack.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5, constant: -verticalOffset / 2),
+            arraySizeStack.centerXAnchor.constraint(equalTo: centerXAnchor),
             
             delayStack.topAnchor.constraint(equalTo: arraySizeStack.bottomAnchor, constant: verticalOffset),
-            delayStack.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.0),
-            delayStack.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.5, constant: -verticalOffset / 2),
-            delayStack.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            delayStack.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1.0),
+            delayStack.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5, constant: -verticalOffset / 2),
+            delayStack.centerXAnchor.constraint(equalTo: centerXAnchor),
         ])
+    }
+
+    private func setupStyle() {
+        arraySizeTextField.focusRingType = .none
+        delayTextField.focusRingType = .none
     }
 }
