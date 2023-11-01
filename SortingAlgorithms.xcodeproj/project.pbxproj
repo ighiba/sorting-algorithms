@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C035F3C42AF2D81500C4D592 /* NSStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C035F3C32AF2D81500C4D592 /* NSStackView.swift */; };
 		C04CBA3C2A8D448E003E6686 /* NSColor+RGBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04CBA3B2A8D448E003E6686 /* NSColor+RGBA.swift */; };
 		C06A526B2A7A71A30035DB99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06A526A2A7A71A30035DB99 /* AppDelegate.swift */; };
 		C06A526F2A7A71A40035DB99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C06A526E2A7A71A40035DB99 /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C035F3C32AF2D81500C4D592 /* NSStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSStackView.swift; sourceTree = "<group>"; };
 		C04CBA3B2A8D448E003E6686 /* NSColor+RGBA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+RGBA.swift"; sourceTree = "<group>"; };
 		C061F1712A81989E0008FE61 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		C06A52672A7A71A30035DB99 /* SortingAlgorithms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SortingAlgorithms.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -223,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				C06A52932A7A98700035DB99 /* NSColor.swift */,
+				C035F3C32AF2D81500C4D592 /* NSStackView.swift */,
 				C04CBA3B2A8D448E003E6686 /* NSColor+RGBA.swift */,
 				C06A52B42A7C04900035DB99 /* Int.swift */,
 				C06A52AC2A7BD41F0035DB99 /* Array+Int.swift */,
@@ -372,6 +375,7 @@
 				C06A529B2A7AFF180035DB99 /* BaseSort.swift in Sources */,
 				C0B1A38C2A7D80A800A4E2BD /* TextFieldDelegate.swift in Sources */,
 				C06A52972A7AB1760035DB99 /* SelectionSort.swift in Sources */,
+				C035F3C42AF2D81500C4D592 /* NSStackView.swift in Sources */,
 				C06A52942A7A98700035DB99 /* NSColor.swift in Sources */,
 				C06A52B32A7C01220035DB99 /* SortStatisticsView.swift in Sources */,
 				C06A52AD2A7BD41F0035DB99 /* Array+Int.swift in Sources */,

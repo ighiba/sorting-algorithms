@@ -33,8 +33,7 @@ class MainViewController: NSViewController {
     // MARK: - Methods
     
     func configureInputs() {
-        mainView.inputContainer.arraySizeTextField.stringValue = "\(viewModel.arraySize)"
-        mainView.inputContainer.delayTextField.stringValue = "\(viewModel.delay)"
+        mainView.inputContainer.setInputValues(arraySize: viewModel.arraySize, delay: viewModel.delay)
     }
     
     func configurePopUpButton() {
@@ -73,8 +72,7 @@ class MainViewController: NSViewController {
             .receive(on: DispatchQueue.main)
             .map { !$0 }
             .sink { [weak self] isEnabled in
-                self?.mainView.inputContainer.arraySizeTextField.isEnabled = isEnabled
-                self?.mainView.inputContainer.delayTextField.isEnabled = isEnabled
+                self?.mainView.inputContainer.setInputIsEnabled(isEnabled)
                 self?.mainView.sortListPopUp.isEnabled = isEnabled
                 self?.mainView.startButton.isEnabled = isEnabled
                 self?.mainView.shuffleButton.isEnabled = isEnabled
