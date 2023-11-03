@@ -26,7 +26,7 @@ class UInt16NumberFormatter: NumberFormatter {
         guard !partialString.isEmpty else { return true }
         
         if let value = UInt16(partialString) {
-            return (value >= minValue && value <= maxValue)
+            return value >= minValue && value <= maxValue
         }
         
         return false

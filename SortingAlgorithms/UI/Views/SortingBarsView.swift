@@ -53,7 +53,7 @@ class SortingBarsView: NSView, SortingView {
         }
         
         let barWidth = Float(2) / Float(barModels.count)
-        let vertices: [Quadrangle] = barModels.enumerated().map { (index, barModel) in
+        let quadrangles: [Quadrangle] = barModels.enumerated().map { (index, barModel) in
             let barHeight = Float(barModel.value * 2 - 1)
             let xPosition = Float(index) * barWidth - 1
             let rgbaColor = barRgbaColor(forType: barModel.type, value: barModel.value)
@@ -66,7 +66,7 @@ class SortingBarsView: NSView, SortingView {
             )
         }
         
-        renderer.renderQuadrangles(vertices)
+        renderer.renderQuadrangles(quadrangles)
     }
     
     // MARK: - Bars colors

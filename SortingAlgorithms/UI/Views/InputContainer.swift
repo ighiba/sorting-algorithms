@@ -26,6 +26,8 @@ class InputContainer: NSView {
         }
     }
     
+    // MARK: - Views
+    
     private let arraySizeStack = NSStackView()
     private let delayStack = NSStackView()
     
@@ -48,6 +50,8 @@ class InputContainer: NSView {
         return textField
     }()
     
+    // MARK: - Init
+    
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
         setupViews()
@@ -58,6 +62,8 @@ class InputContainer: NSView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Methods
 
     private func setupViews() {
         arraySizeStack.addArrangedSubviews([arraySizeLabel, arraySizeTextField])

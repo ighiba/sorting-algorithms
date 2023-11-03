@@ -224,11 +224,11 @@
 		C06A52922A7A985A0035DB99 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				C06A52932A7A98700035DB99 /* NSColor.swift */,
-				C035F3C32AF2D81500C4D592 /* NSStackView.swift */,
-				C04CBA3B2A8D448E003E6686 /* NSColor+RGBA.swift */,
-				C06A52B42A7C04900035DB99 /* Int.swift */,
 				C06A52AC2A7BD41F0035DB99 /* Array+Int.swift */,
+				C06A52B42A7C04900035DB99 /* Int.swift */,
+				C06A52932A7A98700035DB99 /* NSColor.swift */,
+				C04CBA3B2A8D448E003E6686 /* NSColor+RGBA.swift */,
+				C035F3C32AF2D81500C4D592 /* NSStackView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
